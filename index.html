@@ -78,6 +78,32 @@
       color: #58a6ff;
       flex-shrink: 0;
     }
+    .wildcards {
+      margin-top: 1rem;
+      padding-top: 0.75rem;
+      border-top: 1px dashed #30363d;
+    }
+    .wildcards h3 {
+      margin: 0 0 0.5rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #8b949e;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+    .wildcards li {
+      border-bottom: none;
+      padding: 0.2rem 0;
+    }
+    .wildcards .place {
+      color: #c9d1d9;
+      font-size: 0.9rem;
+    }
+    .wildcards .pct {
+      color: #8b949e;
+      font-weight: 400;
+      font-size: 0.8rem;
+    }
     .status, footer {
       text-align: center;
       color: #8b949e;
@@ -129,6 +155,27 @@
             ol.appendChild(li);
           });
           col.appendChild(ol);
+
+          if (region.wildcards && region.wildcards.length) {
+            const wc = document.createElement("div");
+            wc.className = "wildcards";
+            const h3 = document.createElement("h3");
+            h3.textContent = "Eller en nykomling?";
+            wc.appendChild(h3);
+            const wcOl = document.createElement("ol");
+            region.wildcards.forEach((p) => {
+              const li = document.createElement("li");
+              li.innerHTML = `
+                <span class="rank">★</span>
+                <span class="place">${p.place}</span>
+                <span class="pct">${p.country_code.toUpperCase()}</span>
+              `;
+              wcOl.appendChild(li);
+            });
+            wc.appendChild(wcOl);
+            col.appendChild(wc);
+          }
+
           columnsEl.appendChild(col);
         }
 

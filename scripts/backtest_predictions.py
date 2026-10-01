@@ -12,8 +12,11 @@ Usage: python scripts/backtest_predictions.py [--seasons N] [--top N]
 """
 import argparse
 import csv
+import math
 from collections import defaultdict
 from pathlib import Path
+
+from fetch_fame import load_cache as load_fame_cache
 
 ROOT = Path(__file__).resolve().parent.parent
 RESMAL_CSV = ROOT / "data" / "resmal.csv"
@@ -21,27 +24,43 @@ REGIONS_CSV = ROOT / "data" / "resmal_regions.csv"
 
 COOLDOWN_EPISODES = 20
 REGIONS = ("sweden", "europe", "outside_europe")
+# Sweden can be any town at all (per manual review), so fame isn't a useful
+# discriminator there - only apply the fame boost to Europe/outside-Europe.
+FAME_REGIONS = ("europe", "outside_europe")
 
-# Candidate scoring strategies, each: (count, episodes_since) -> weight.
+FAME = load_fame_cache()
+MAX_FAME = max(FAME.values()) if FAME else 1
+
+
+def fame_multiplier(place, region):
+    """1x (no change) for obscure places, up to 2x for the most sv.wikipedia-famous ones."""
+    if region not in FAME_REGIONS:
+        return 1.0
+    return 1.0 + math.log1p(FAME.get(place, 0)) / math.log1p(MAX_FAME)
+
+
+# Candidate scoring strategies, each: (place, region, count, episodes_since) -> weight.
 # "current" is the formula live in build_predictions.py today.
 STRATEGIES = {
-    "current": lambda c, since: c * min(1.0, since / COOLDOWN_EPISODES),
-    "recency_only": lambda c, since: since,
-    "count_only": lambda c, since: c,
-    "recency_sqrt_count": lambda c, since: since / (c ** 0.5),
-    "recency_div_count": lambda c, since: since / c,
-    "sqrt_count_cooldown": lambda c, since: (c ** 0.5) * min(1.0, since / COOLDOWN_EPISODES),
-    "log_count_cooldown": lambda c, since: __import__("math").log1p(c) * min(1.0, since / COOLDOWN_EPISODES),
-    "cooldown_10": lambda c, since: c * min(1.0, since / 10),
-    "cooldown_30": lambda c, since: c * min(1.0, since / 30),
-    "cooldown_50": lambda c, since: c * min(1.0, since / 50),
-    "cooldown_70": lambda c, since: c * min(1.0, since / 70),
-    "cooldown_100": lambda c, since: c * min(1.0, since / 100),
-    "cooldown_150": lambda c, since: c * min(1.0, since / 150),
-    "cooldown_200": lambda c, since: c * min(1.0, since / 200),
-    "cooldown_300": lambda c, since: c * min(1.0, since / 300),
-    "sqrt_count_cooldown_50": lambda c, since: (c ** 0.5) * min(1.0, since / 50),
-    "log_count_cooldown_50": lambda c, since: __import__("math").log1p(c) * min(1.0, since / 50),
+    "current": lambda p, r, c, since: c * min(1.0, since / COOLDOWN_EPISODES),
+    "recency_only": lambda p, r, c, since: since,
+    "count_only": lambda p, r, c, since: c,
+    "recency_sqrt_count": lambda p, r, c, since: since / (c ** 0.5),
+    "recency_div_count": lambda p, r, c, since: since / c,
+    "sqrt_count_cooldown": lambda p, r, c, since: (c ** 0.5) * min(1.0, since / COOLDOWN_EPISODES),
+    "log_count_cooldown": lambda p, r, c, since: math.log1p(c) * min(1.0, since / COOLDOWN_EPISODES),
+    "cooldown_10": lambda p, r, c, since: c * min(1.0, since / 10),
+    "cooldown_30": lambda p, r, c, since: c * min(1.0, since / 30),
+    "cooldown_50": lambda p, r, c, since: c * min(1.0, since / 50),
+    "cooldown_70": lambda p, r, c, since: c * min(1.0, since / 70),
+    "cooldown_100": lambda p, r, c, since: c * min(1.0, since / 100),
+    "cooldown_150": lambda p, r, c, since: c * min(1.0, since / 150),
+    "cooldown_200": lambda p, r, c, since: c * min(1.0, since / 200),
+    "cooldown_300": lambda p, r, c, since: c * min(1.0, since / 300),
+    "sqrt_count_cooldown_50": lambda p, r, c, since: (c ** 0.5) * min(1.0, since / 50),
+    "log_count_cooldown_50": lambda p, r, c, since: math.log1p(c) * min(1.0, since / 50),
+    "cooldown_100_fame": lambda p, r, c, since: c * min(1.0, since / 100) * fame_multiplier(p, r),
+    "cooldown_150_fame": lambda p, r, c, since: c * min(1.0, since / 150) * fame_multiplier(p, r),
 }
 
 
@@ -70,7 +89,7 @@ def rank_places(train_resa, train_all, train_episode_index, region_by_place, str
         if region not in REGIONS:
             continue
         episodes_since = train_total - 1 - last_seen[place]
-        by_region[region].append((place, score_fn(c, episodes_since)))
+        by_region[region].append((place, score_fn(place, region, c, episodes_since)))
 
     ranked = {}
     for region in REGIONS:

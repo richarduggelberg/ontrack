@@ -21,6 +21,19 @@ accuracy is modest - run the backtest script for current numbers - since
 a meaningful share of real picks are long-tail or first-ever appearances
 no history-based model can anticipate.
 
+Fame boost: for Europe/outside-Europe (not Sweden - per manual review
+that slot can be any town at all), weight is additionally multiplied by
+1 + log1p(sv.wikipedia pageviews) / log1p(max pageviews in the dataset),
+so a place known to Swedes (see fetch_fame.py) ranks a bit higher than an
+equally-frequent but obscure one. This only re-ranks places with existing
+show history though; it still can't predict true first-time destinations.
+
+Wildcards: data/wildcards.csv (built by build_wildcards.py) lists world
+capitals / population >= 1M cities that have NEVER appeared on the show,
+ranked purely by fame. These are surfaced separately per region (not
+mixed into the history-based ranking) as the model's best guess at what
+a first-time destination might look like.
+
 The candidate pool and historical_count are based only on the main "resa"
 destinations. But "episodes_since_last_seen" also counts appearances in
 the tintin_haddock / narmast_vinner bonus segments: a place flagged there
@@ -31,6 +44,7 @@ Usage: python scripts/build_predictions.py
 """
 import csv
 import json
+import math
 from collections import defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
@@ -38,10 +52,16 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 RESMAL_CSV = ROOT / "data" / "resmal.csv"
 REGIONS_CSV = ROOT / "data" / "resmal_regions.csv"
+FAME_CACHE = ROOT / "data" / "fame_cache.json"
+WILDCARDS_CSV = ROOT / "data" / "wildcards.csv"
 OUT_PATH = ROOT / "data" / "predictions.json"
 
 COOLDOWN_EPISODES = 100
 TOP_N = 15
+WILDCARD_N = 10
+# Sweden can be literally any town (per manual review), so fame isn't a
+# useful discriminator there - only boost Europe/outside-Europe by it.
+FAME_REGIONS = ("europe", "outside_europe")
 
 REGION_LABELS = {
     "sweden": "Sverige",
@@ -53,6 +73,14 @@ REGION_LABELS = {
 def main():
     with REGIONS_CSV.open(encoding="utf-8") as f:
         region_by_place = {row["resmal"]: row["region"] for row in csv.DictReader(f)}
+
+    fame = json.loads(FAME_CACHE.read_text(encoding="utf-8")) if FAME_CACHE.exists() else {}
+    max_fame = max(fame.values()) if fame else 1
+
+    def fame_multiplier(place, region):
+        if region not in FAME_REGIONS:
+            return 1.0
+        return 1.0 + math.log1p(fame.get(place, 0)) / math.log1p(max_fame)
 
     with RESMAL_CSV.open(encoding="utf-8") as f:
         all_rows = list(csv.DictReader(f))
@@ -92,7 +120,7 @@ def main():
             continue
         episodes_since = total_episodes - 1 - last_seen[place]
         recency_factor = min(1.0, episodes_since / COOLDOWN_EPISODES)
-        weight = c * recency_factor
+        weight = c * recency_factor * fame_multiplier(place, region)
         by_region[region].append({
             "place": place,
             "count": c,
@@ -114,6 +142,23 @@ def main():
                 "percentage": round(100 * p["weight"] / total_weight, 1),
             })
         output_regions[region] = {"label": label, "predictions": ranked}
+
+    wildcards_by_region = defaultdict(list)
+    if WILDCARDS_CSV.exists():
+        with WILDCARDS_CSV.open(encoding="utf-8") as f:
+            for row in csv.DictReader(f):
+                wildcards_by_region[row["region"]].append(row)
+    for region in FAME_REGIONS:
+        candidates = sorted(wildcards_by_region.get(region, []), key=lambda r: int(r["fame"]), reverse=True)
+        output_regions[region]["wildcards"] = [
+            {
+                "place": r["resmal"],
+                "country_code": r["country_code"],
+                "population": int(r["population"]),
+                "fame": int(r["fame"]),
+            }
+            for r in candidates[:WILDCARD_N]
+        ]
 
     output = {
         "generated_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),

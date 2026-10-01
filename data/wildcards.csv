@@ -1,0 +1,559 @@
+resmal,country_code,region,population,fame
+Djibouti,dj,outside_europe,626512,20206
+Vientiane,la,outside_europe,840940,15890
+Volgograd,ru,europe,1013533,15178
+Aleppo,sy,outside_europe,2098210,14217
+Abidjan,ci,outside_europe,6321017,13371
+Astana,kz,outside_europe,1544142,13210
+Kazan,ru,europe,1243500,12991
+Longyearbyen,sj,europe,2368,12818
+Hiroshima,jp,outside_europe,1200754,11528
+Doha,qa,outside_europe,344939,10981
+Chongqing,cn,outside_europe,22000000,10921
+Tórshavn,fo,europe,13200,10863
+New Delhi,in,outside_europe,317797,10203
+Erbil,iq,outside_europe,1612700,9915
+Asmara,er,outside_europe,563930,9890
+Pristina,xk,europe,550000,9826
+Yamoussoukro,ci,outside_europe,275686,9815
+Chennai,in,outside_europe,4681087,9337
+Guangzhou,cn,outside_europe,18676605,9050
+Accra,gh,outside_europe,1963264,8510
+Riyadh,sa,outside_europe,4205961,7929
+Windhoek,na,outside_europe,386219,7664
+Gustavia,bl,outside_europe,5988,7512
+Novosibirsk,ru,europe,1612833,7373
+Dhaka,bd,outside_europe,10356500,7068
+Antalya,tr,outside_europe,1335002,7015
+Medellín,co,outside_europe,1999979,6982
+Podgorica,me,europe,236852,6898
+Almaty,kz,outside_europe,1977011,6740
+Karachi,pk,outside_europe,11624219,6727
+Kobe,jp,outside_europe,1525152,6627
+Shiraz,ir,outside_europe,1249942,6583
+Mosul,iq,outside_europe,1683000,6466
+Adana,tr,outside_europe,1816750,6431
+Agra,in,outside_europe,1430055,6414
+Busan,kr,outside_europe,3285147,5999
+Luanda,ao,outside_europe,2776168,5738
+Varanasi,in,outside_europe,1164404,5655
+Giza,eg,outside_europe,4367343,5564
+Tripoli,ly,outside_europe,1302947,5477
+Antananarivo,mg,outside_europe,1349501,5473
+Lomé,tg,outside_europe,2188376,5462
+Omsk,ru,europe,1172070,5247
+Adelaide,au,outside_europe,1469163,5199
+Durban,za,outside_europe,3338026,5161
+Sucre,bo,outside_europe,224838,4831
+Edmonton,ca,outside_europe,1010899,4596
+Maseru,ls,outside_europe,359753,4453
+Dodoma,tz,outside_europe,765179,4450
+Sanaa,ye,outside_europe,1937451,4401
+Bamako,ml,outside_europe,4227569,4354
+Shenzhen,cn,outside_europe,17494398,4288
+Tegucigalpa,hn,outside_europe,850848,4174
+Saipan,mp,outside_europe,48220,4067
+Manaus,br,outside_europe,2219580,4005
+Mombasa,ke,outside_europe,1208333,4000
+Nanjing,cn,outside_europe,9314685,3937
+Caracas,ve,outside_europe,3000000,3912
+Niamey,ne,outside_europe,1323691,3909
+Sapporo,jp,outside_europe,1973832,3865
+Aden,ye,outside_europe,1079670,3791
+Grytviken,gs,outside_europe,2,3787
+Papeete,pf,outside_europe,26357,3780
+San Antonio,us,outside_europe,1526656,3746
+Tabriz,ir,outside_europe,1424641,3701
+Chengdu,cn,outside_europe,20937757,3653
+Manama,bh,outside_europe,147074,3629
+Freetown,sl,outside_europe,802639,3628
+Samara,ru,europe,1163399,3606
+Ouagadougou,bf,outside_europe,2415266,3562
+Yokohama,jp,outside_europe,3777491,3541
+Nagoya,jp,outside_europe,2332176,3541
+Gaziantep,tr,outside_europe,2222415,3539
+Jaipur,in,outside_europe,3046163,3538
+Konya,tr,outside_europe,1433861,3474
+Nouméa,nc,outside_europe,93060,3463
+Kigali,rw,outside_europe,1132686,3450
+Harare,zw,outside_europe,1542813,3353
+Brazzaville,cg,outside_europe,1982000,3279
+Saint-Denis,re,outside_europe,154765,3152
+Jeddah,sa,outside_europe,4697000,3109
+Ufa,ru,europe,1120547,3097
+Tianjin,cn,outside_europe,13866009,3046
+Port Moresby,pg,outside_europe,283733,3037
+Gwangju,kr,outside_europe,1401235,3027
+Banjul,gm,outside_europe,37274,2976
+Mashhad,ir,outside_europe,2307177,2961
+Kirkuk,iq,outside_europe,1031000,2934
+Praia,cv,outside_europe,137868,2898
+Port-au-Prince,ht,outside_europe,1234742,2873
+Monrovia,lr,outside_europe,1542549,2863
+Da Nang,vn,outside_europe,1276000,2860
+Lubumbashi,cd,outside_europe,2221925,2849
+Conakry,gn,outside_europe,1928389,2799
+Santo Domingo,do,outside_europe,2201941,2707
+Lahore,pk,outside_europe,13004135,2697
+Paramaribo,sr,outside_europe,223757,2694
+Diyarbakır,tr,outside_europe,1833684,2688
+Xiamen,cn,outside_europe,4617251,2659
+Soweto,za,outside_europe,1695047,2580
+Fukuoka,jp,outside_europe,1612392,2550
+Hyderabad,in,outside_europe,6993262,2487
+Nouakchott,mr,outside_europe,1184530,2482
+Cayenne,gf,outside_europe,61550,2425
+Karbala,iq,outside_europe,1218732,2411
+Hangzhou,cn,outside_europe,11936010,2346
+Yaren,nr,outside_europe,1100,2305
+Porto Alegre,br,outside_europe,1488252,2206
+Harbin,cn,outside_europe,10009854,2205
+Port Louis,mu,outside_europe,155226,2170
+Porto-Novo,bj,outside_europe,264320,2154
+Fort Worth,us,outside_europe,1008106,2149
+Apia,ws,outside_europe,40407,2131
+Amritsar,in,outside_europe,1159227,2122
+Monterrey,mx,outside_europe,1135512,2037
+Saint Petersburg,ru,europe,5351935,1985
+Pune,in,outside_europe,3124458,1960
+Huế,vn,outside_europe,1380000,1915
+Alofi,nu,outside_europe,624,1886
+Thimphu,bt,outside_europe,98676,1868
+Aba,ng,outside_europe,1160000,1867
+Guayaquil,ec,outside_europe,2723665,1863
+Sendai,jp,outside_europe,1096704,1845
+N'Djamena,td,outside_europe,1359526,1813
+Willemstad,cw,outside_europe,125000,1808
+Belo Horizonte,br,outside_europe,2721564,1802
+Qingdao,cn,outside_europe,7172451,1784
+Ürümqi,cn,outside_europe,4054000,1768
+Santa Cruz de la Sierra,bo,outside_europe,1831434,1740
+Barranquilla,co,outside_europe,1206319,1670
+Belém,br,outside_europe,1499641,1661
+Sharjah,ae,outside_europe,1800000,1646
+Suva,fj,outside_europe,77366,1627
+Yaoundé,cm,outside_europe,1299369,1608
+Oranjestad,aw,outside_europe,29998,1526
+Haikou,cn,outside_europe,3001600,1524
+Guatemala City,gt,outside_europe,994938,1516
+Incheon,kr,outside_europe,3015482,1512
+Libreville,ga,outside_europe,846090,1505
+Curitiba,br,outside_europe,1948626,1504
+Moroni,km,outside_europe,74749,1500
+Funafuti,tv,outside_europe,6320,1485
+Hamilton,bm,outside_europe,902,1466
+Dalian,cn,outside_europe,7450785,1466
+Tarawa,ki,outside_europe,40311,1431
+Juba,ss,outside_europe,450000,1416
+Charlotte Amalie,vi,outside_europe,20000,1416
+Suzhou,cn,outside_europe,6715559,1382
+Dammam,sa,outside_europe,1252523,1380
+Quezon City,ph,outside_europe,3084270,1378
+Castries,lc,outside_europe,20000,1356
+Managua,ni,outside_europe,973087,1354
+Daegu,kr,outside_europe,2365523,1343
+Port of Spain,tt,outside_europe,49031,1335
+Victoria,sc,outside_europe,22881,1313
+Kunming,cn,outside_europe,5950578,1305
+Gqeberha,za,outside_europe,1050078,1300
+Majuro,mh,outside_europe,25400,1299
+Mérida,mx,outside_europe,1201000,1299
+Surabaya,id,outside_europe,3018022,1293
+Ngerulmud,pw,outside_europe,0,1285
+Recife,br,outside_europe,1653461,1273
+Fortaleza,br,outside_europe,2400000,1273
+Arequipa,pe,outside_europe,1195700,1196
+Saint Helier,je,europe,28000,1175
+Benin City,ng,outside_europe,1782000,1164
+Bandar Seri Begawan,bn,outside_europe,64409,1160
+São Tomé,st,outside_europe,53300,1141
+Bissau,gw,outside_europe,439704,1124
+Changsha,cn,outside_europe,3093980,1120
+Bangui,cf,outside_europe,812407,1078
+Karaj,ir,outside_europe,1448075,1074
+Ulsan,kr,outside_europe,1098421,1062
+Lucknow,in,outside_europe,2472011,1049
+Saitama,jp,outside_europe,1324854,1039
+Basseterre,kn,outside_europe,12920,1038
+Bridgetown,bb,outside_europe,98511,1036
+Gitega,bi,outside_europe,64904,1020
+Mamoudzou,yt,outside_europe,54831,1020
+Lilongwe,mw,outside_europe,1115815,1015
+Dili,tl,outside_europe,150000,1009
+Ahmedabad,in,outside_europe,6357693,995
+Belmopan,bz,outside_europe,13381,993
+Quetta,pk,outside_europe,1565546,984
+Bhopal,in,outside_europe,1798218,970
+Medan,id,outside_europe,2486283,955
+Hagåtña,gu,outside_europe,1051,946
+Ningbo,cn,outside_europe,3731203,931
+Kawasaki,jp,outside_europe,1538262,931
+Port-aux-Français,tf,outside_europe,45,918
+Dongguan,cn,outside_europe,9644871,913
+Douglas,im,europe,26218,907
+Shenyang,cn,outside_europe,9070093,890
+Kingstown,vc,outside_europe,24518,864
+Kayseri,tr,outside_europe,1452458,858
+Guilin,cn,outside_europe,1572300,848
+Mbabane,sz,outside_europe,76218,843
+Fort-de-France,mq,outside_europe,89995,826
+Roseau,dm,outside_europe,16571,825
+Luoyang,cn,outside_europe,1390581,814
+Douala,cm,outside_europe,1338082,808
+Philipsburg,sx,outside_europe,1400,792
+Mandalay,mm,outside_europe,1208099,786
+Palikir,fm,outside_europe,6942,782
+Callao,pe,outside_europe,1226200,771
+Omdurman,sd,outside_europe,1849659,766
+Pago Pago,as,outside_europe,11500,755
+Davao,ph,outside_europe,1848947,747
+Rawalpindi,pk,outside_europe,3357612,740
+Zhuhai,cn,outside_europe,2207090,736
+Honiara,sb,outside_europe,56298,729
+Basse-Terre,gp,outside_europe,11472,723
+Makassar,id,outside_europe,1474393,714
+Changchun,cn,outside_europe,5691024,711
+Puebla,mx,outside_europe,1692181,709
+Nanning,cn,outside_europe,5977185,701
+Srinagar,in,outside_europe,1206419,682
+Macau,mo,outside_europe,649335,671
+Ibadan,ng,outside_europe,3649000,664
+Nantong,cn,outside_europe,2273326,660
+Georgetown,gy,outside_europe,235017,657
+Surat,in,outside_europe,4591246,649
+Peshawar,pk,outside_europe,4758762,646
+Jodhpur,in,outside_europe,1056191,631
+Suwon,kr,outside_europe,1234582,606
+Zhengzhou,cn,outside_europe,6650532,605
+Saint George's,gd,outside_europe,7500,601
+Avarua,ck,outside_europe,13373,591
+Kaohsiung,tw,outside_europe,2737660,591
+Mexicali,mx,outside_europe,1032686,559
+Cockburn Town,tc,outside_europe,3720,557
+Jinan,cn,outside_europe,8352574,556
+Kano,ng,outside_europe,4910000,553
+Bandung,id,outside_europe,2528163,550
+Fuzhou,cn,outside_europe,4094491,549
+Hohhot,cn,outside_europe,3446100,549
+Daejeon,kr,outside_europe,1441203,540
+Tainan,tw,outside_europe,1856642,534
+Kumasi,gh,outside_europe,2544530,519
+Maceió,br,outside_europe,1031597,516
+Kaifeng,cn,outside_europe,1451741,505
+Maracaibo,ve,outside_europe,1752602,500
+Sanya,cn,outside_europe,1031396,499
+Nagpur,in,outside_europe,2405665,496
+Madurai,in,outside_europe,1465625,496
+Flying Fish Cove,cx,outside_europe,1355,488
+Hefei,cn,outside_europe,9465881,474
+Jilin,cn,outside_europe,1895865,471
+Port Harcourt,ng,outside_europe,2120000,469
+Kralendijk,bq,outside_europe,10620,468
+Road Town,vg,outside_europe,8449,460
+Patna,in,outside_europe,1684297,448
+Goiânia,br,outside_europe,1536097,446
+Yinchuan,cn,outside_europe,2859074,442
+Nanchang,cn,outside_europe,2357839,442
+Wenzhou,cn,outside_europe,2650000,427
+Lanzhou,cn,outside_europe,4359446,427
+Kisangani,cd,outside_europe,1602144,424
+Wuxi,cn,outside_europe,4396835,420
+Ciudad de la Paz,gq,outside_europe,2000,399
+Batam,id,outside_europe,1296960,399
+Foshan,cn,outside_europe,9042509,398
+Changzhou,cn,outside_europe,3290918,397
+Santiago de Querétaro,mx,outside_europe,1594212,395
+Kanpur,in,outside_europe,2823249,391
+Anshan,cn,outside_europe,3325372,390
+Mumbai,in,outside_europe,12691836,378
+Pointe-Noire,cg,outside_europe,1032000,371
+Pudong,cn,outside_europe,5681512,351
+Cixi,cn,outside_europe,1457510,346
+Mwanza,tz,outside_europe,1104521,346
+Perth,au,outside_europe,2384371,340
+Yancheng,cn,outside_europe,1615717,334
+Shijiazhuang,cn,outside_europe,5758403,332
+Visakhapatnam,in,outside_europe,1063178,330
+Kananga,cd,outside_europe,1271704,324
+Guadalajara,mx,outside_europe,1385629,322
+Yiwu,cn,outside_europe,1481384,321
+Taichung,tw,outside_europe,2850285,316
+Campinas,br,outside_europe,1031554,305
+Taiyuan,cn,outside_europe,5305061,302
+Coimbatore,in,outside_europe,2136916,290
+Quanzhou,cn,outside_europe,1469157,289
+Nashik,in,outside_europe,1486053,289
+Isfahan,ir,outside_europe,1547164,285
+Daqing,cn,outside_europe,1604027,283
+Vadodara,in,outside_europe,1822221,283
+Ludhiana,in,outside_europe,1618879,280
+Prayagraj,in,outside_europe,1073438,279
+Yantai,cn,outside_europe,7102100,274
+Zhongshan,cn,outside_europe,3841873,273
+Xianyang,cn,outside_europe,1034081,271
+León de los Aldama,mx,outside_europe,1579803,271
+Marigot,mf,outside_europe,5700,269
+Maiduguri,ng,outside_europe,1110000,269
+Indore,in,outside_europe,1994397,268
+Tangshan,cn,outside_europe,3372102,265
+Ciudad Juárez,mx,outside_europe,1512450,262
+The Valley,ai,outside_europe,2035,255
+Guiyang,cn,outside_europe,4506134,251
+Semarang,id,outside_europe,1694740,251
+Faisalabad,pk,outside_europe,3800193,251
+Bogor,id,outside_europe,1078351,250
+Ecatepec de Morelos,mx,outside_europe,1645352,248
+Multan,pk,outside_europe,2169915,246
+Stanley,fk,outside_europe,2213,245
+Jamshedpur,in,outside_europe,1339438,238
+Zhanjiang,cn,outside_europe,1400709,233
+Huizhou,cn,outside_europe,2900113,230
+Shantou,cn,outside_europe,3838900,227
+Xuzhou,cn,outside_europe,1253991,227
+Mbuji-Mayi,cd,outside_europe,2101332,226
+İzmir,tr,outside_europe,2938292,223
+Xining,cn,outside_europe,2467965,221
+Wuchang,cn,outside_europe,1102188,219
+Datong,cn,outside_europe,3105591,215
+Kunshan,cn,outside_europe,2092496,213
+Aurangabad,in,outside_europe,1175116,206
+Navi Mumbai,in,outside_europe,2600000,206
+Palembang,id,outside_europe,1801367,205
+Changwon,kr,outside_europe,1025702,204
+Kaduna,ng,outside_europe,1850000,193
+Muscat,om,outside_europe,797000,192
+Sokoto,ng,outside_europe,1040000,188
+Shaoxing,cn,outside_europe,2300000,187
+Yichang,cn,outside_europe,1350150,186
+Jiangmen,cn,outside_europe,1795459,184
+Zibo,cn,outside_europe,4704138,183
+Baotou,cn,outside_europe,2761700,182
+Anyang,cn,outside_europe,1146839,180
+Jacksonville,us,outside_europe,1009833,178
+Guarulhos,br,outside_europe,1345364,171
+Kota,in,outside_europe,1001694,169
+Cali,co,outside_europe,2392877,168
+Xiangyang,cn,outside_europe,1294733,166
+Jiaxing,cn,outside_europe,1180000,166
+Bursa,tr,outside_europe,3101833,166
+Yangzhou,cn,outside_europe,4559797,159
+Liuzhou,cn,outside_europe,1436599,159
+Barquisimeto,ve,outside_europe,1240714,158
+Baoding,cn,outside_europe,2739887,154
+Male,mv,outside_europe,103693,154
+Tiruchirappalli,in,outside_europe,1022518,151
+Wuhu,cn,outside_europe,1598165,150
+Jinhua,cn,outside_europe,1463990,144
+Zapopan,mx,outside_europe,1476491,141
+Touba,sn,outside_europe,1120824,141
+Mata-Utu,wf,outside_europe,1200,141
+Xinyang,cn,outside_europe,1416800,140
+Onitsha,ng,outside_europe,1553000,140
+San Juan,pr,outside_europe,418140,140
+Kathmandu,np,outside_europe,1442271,135
+Kuwait City,kw,outside_europe,60064,130
+Weifang,cn,outside_europe,9386705,127
+Longyan,cn,outside_europe,1025087,125
+Ranchi,in,outside_europe,1120374,123
+Ganzhou,cn,outside_europe,1977253,122
+Salvador,br,outside_europe,2711840,121
+Hengyang,cn,outside_europe,1075516,121
+Handan,cn,outside_europe,1358318,121
+Changshu,cn,outside_europe,1677050,119
+Kakamega,ke,outside_europe,1867579,119
+Shiyan,cn,outside_europe,3460000,118
+Pekanbaru,id,outside_europe,1167599,116
+Vijayawada,in,outside_europe,1143232,116
+Jabalpur,in,outside_europe,1081677,116
+Raipur,in,outside_europe,1027264,115
+Linyi,cn,outside_europe,2743843,114
+Chaozhou,cn,outside_europe,1750945,113
+Jingzhou,cn,outside_europe,1052282,111
+Santiago de los Caballeros,do,outside_europe,1200000,111
+Taguig,ph,outside_europe,1308085,111
+Faridabad,in,outside_europe,1414050,108
+Tangerang,id,outside_europe,1927815,105
+Gwalior,in,outside_europe,1054420,105
+Matola,mz,outside_europe,1198988,105
+Huai'an,cn,outside_europe,4556230,104
+Pikine,sn,outside_europe,1170791,104
+Khulna,bd,outside_europe,1500689,101
+Changde,cn,outside_europe,1457419,98
+Putian,cn,outside_europe,1539389,97
+Shaoguan,cn,outside_europe,1028460,95
+Jamestown,sh,outside_europe,637,95
+Gujranwala,pk,outside_europe,2511118,91
+Zigong,cn,outside_europe,1262064,89
+Zhuzhou,cn,outside_europe,1129687,88
+Xinxiang,cn,outside_europe,1047088,87
+Bengaluru,in,outside_europe,8495492,87
+Bekasi,id,outside_europe,2648272,86
+Huzhou,cn,outside_europe,1015937,85
+Kolkata,in,outside_europe,4631392,85
+Zhangjiagang,cn,outside_europe,1432044,84
+Heze,cn,outside_europe,1346717,84
+Iztapalapa,mx,outside_europe,1835486,84
+Depok,id,outside_europe,2163635,83
+Zhaoqing,cn,outside_europe,1553109,82
+Xuchang,cn,outside_europe,1265536,82
+Lianyungang,cn,outside_europe,2001009,82
+Jining,cn,outside_europe,1241012,80
+Meerut,in,outside_europe,1223184,79
+Maoming,cn,outside_europe,1307802,77
+Shangqiu,cn,outside_europe,1859723,76
+Qingyuan,cn,outside_europe,1738424,76
+Jiujiang,cn,outside_europe,1164268,76
+Bandar Lampung,id,outside_europe,1166066,76
+Nanyang,cn,outside_europe,1811812,74
+Hanzhong,cn,outside_europe,1006557,74
+Gustavo Adolfo Madero,mx,outside_europe,1185772,74
+Zunyi,cn,outside_europe,2037775,73
+Shangrao,cn,outside_europe,1116486,73
+Qujing,cn,outside_europe,1408500,73
+Fes,ma,outside_europe,1191905,73
+Ilorin,ng,outside_europe,1080000,72
+Jiading,cn,outside_europe,1886100,71
+Jinzhou,cn,outside_europe,1524362,71
+Biên Hòa,vn,outside_europe,1272235,71
+Jiangyin,cn,outside_europe,1779515,69
+Baoji,cn,outside_europe,1437802,69
+Yangjiang,cn,outside_europe,1292987,68
+Bozhou,cn,outside_europe,1409436,68
+Luxembourg,lu,europe,76684,66
+Saint-Pierre,pm,outside_europe,6200,66
+Fushun,cn,outside_europe,1400646,65
+Pimpri-Chinchwad,in,outside_europe,1727692,63
+Mianyang,cn,outside_europe,1550000,62
+Luohe,cn,outside_europe,1294974,59
+Tianshui,cn,outside_europe,1212791,56
+Huainan,cn,outside_europe,3033528,55
+Fuyang,cn,outside_europe,1768947,55
+Qingyang,cn,outside_europe,2125400,54
+Bannu,pk,outside_europe,1357890,53
+Huaibei,cn,outside_europe,1113321,52
+Nanhai,cn,outside_europe,3667247,52
+Wanzhou,cn,outside_europe,1545900,52
+Nanchong,cn,outside_europe,1858875,50
+Dhanbad,in,outside_europe,1196214,49
+Meishan,cn,outside_europe,1107742,47
+Liupanshui,cn,outside_europe,1320825,47
+Yangpu,cn,outside_europe,1210800,46
+Puyang,cn,outside_europe,3590000,46
+Weinan,cn,outside_europe,1199290,45
+Minhang,cn,outside_europe,2716600,45
+Changzhi,cn,outside_europe,1214940,45
+Qinzhou,cn,outside_europe,1296300,43
+Chisinau,md,europe,635994,43
+Trujillo,pe,outside_europe,1067700,43
+Yunfu,cn,outside_europe,2612800,42
+Liaocheng,cn,outside_europe,1229768,42
+Haiphong,vn,outside_europe,2625200,42
+Xuhui,cn,outside_europe,1109800,41
+Dazhou,cn,outside_europe,1589435,41
+Guigang,cn,outside_europe,1086327,40
+Jieyang,cn,outside_europe,1899394,38
+Yangon,mm,outside_europe,4477638,38
+Wuwei,cn,outside_europe,1010295,37
+Suqian,cn,outside_europe,1437685,36
+Jos,ng,outside_europe,1040000,36
+Yongzhou,cn,outside_europe,1020715,35
+Yixing,cn,outside_europe,1285785,35
+Abobo,ci,outside_europe,1340083,34
+Neijiang,cn,outside_europe,1251095,34
+Bijie,cn,outside_europe,1137383,34
+Bazhong,cn,outside_europe,2712894,34
+Tirunelveli,in,outside_europe,1435844,34
+Cape Town,za,outside_europe,4772846,34
+Panjin,cn,outside_europe,1166481,33
+Bao'an,cn,outside_europe,4476554,33
+West Island,cc,outside_europe,120,31
+Zaozhuang,cn,outside_europe,3855601,31
+Lüliang,cn,outside_europe,3346500,29
+Wuzhong,cn,outside_europe,7202654,27
+Hezhou,cn,outside_europe,1005490,24
+Howrah,in,outside_europe,1027672,24
+Tangier,ma,outside_europe,1035141,24
+Ordos,cn,outside_europe,2153638,23
+Kharkiv,ua,europe,1421125,23
+Zhongwei,cn,outside_europe,1174600,22
+Yulin,cn,outside_europe,1056743,21
+Jinzhong,cn,outside_europe,1226617,21
+Puxi,cn,outside_europe,6683712,21
+Tashkent,uz,outside_europe,1978028,21
+Adamstown,pn,outside_europe,46,20
+Zoucheng,cn,outside_europe,1116692,19
+Taizhou,cn,outside_europe,1607108,19
+Fengxiang,cn,outside_europe,1140872,19
+Voronezh,ru,europe,1047549,19
+Yishui,cn,outside_europe,1007100,18
+Xinyi,cn,outside_europe,1014577,18
+Yerevan,am,outside_europe,1144700,17
+Puning,cn,outside_europe,1998619,16
+Baoshan,cn,outside_europe,2265900,14
+Songjiang,cn,outside_europe,1973500,13
+Bishkek,kg,outside_europe,900000,13
+Ashgabat,tm,outside_europe,1030063,13
+Yekaterinburg,ru,europe,1495066,11
+Rangpur,bd,outside_europe,1031388,10
+Chelyabinsk,ru,europe,1202371,10
+Yichun,cn,outside_europe,1045952,9
+Qingpu,cn,outside_europe,1271424,9
+Pimpri,in,outside_europe,1284606,9
+Tai’an,cn,outside_europe,1735425,8
+George Town,ky,outside_europe,29370,7
+Shymkent,kz,outside_europe,1200000,7
+Dushanbe,tj,outside_europe,679400,7
+Gazipur,bd,outside_europe,2674697,6
+Jinjiang,cn,outside_europe,1416151,6
+Heshan,cn,outside_europe,1249807,6
+Virār,in,outside_europe,1222390,6
+Xi’an,cn,outside_europe,12952907,5
+Putuo,cn,outside_europe,1239100,5
+Lianjiang,cn,outside_europe,1363470,5
+Bayan Nur,cn,outside_europe,1760000,5
+Jepara,id,outside_europe,1257912,5
+Rostov-on-Don,ru,europe,1130305,5
+Madinah,sa,outside_europe,1300000,4
+Cần Thơ,vn,outside_europe,1507187,4
+Guankou,cn,outside_europe,1380000,3
+Zhu Cheng City,cn,outside_europe,1000000,2
+Saint Peter Port,gg,europe,16488,2
+Al Mawşil al Jadīdah,iq,outside_europe,2065597,2
+Sadr City,iq,outside_europe,1211849,2
+Nay Pyi Taw,mm,outside_europe,925000,2
+Makkah,sa,outside_europe,1578722,2
+Shubrā al Khaymah,eg,outside_europe,1240289,1
+Teni,in,outside_europe,1034724,1
+Goyang-si,kr,outside_europe,1061752,1
+Ciudad Nezahualcoyotl,mx,outside_europe,1077208,1
+Saint John’s,ag,outside_europe,51737,0
+Chattogram,bd,outside_europe,3920222,0
+Chengtangcun,cn,outside_europe,1756300,0
+Rui’an,cn,outside_europe,1125000,0
+Lu’an,cn,outside_europe,1644344,0
+Luohu District,cn,outside_europe,1143801,0
+Camayenne,gn,outside_europe,1871242,0
+South Tangerang,id,outside_europe,1429529,0
+Thāne,in,outside_europe,1841488,0
+Rasapūdipalem,in,outside_europe,1728128,0
+Rājkot,in,outside_europe,1390640,0
+Nowrangapur,in,outside_europe,1220946,0
+Najafgarh,in,outside_europe,1365000,0
+Kalyān,in,outside_europe,1262255,0
+Ghāziābād,in,outside_europe,1199191,0
+Dombivali,in,outside_europe,1247327,0
+Shivaji Nagar,in,outside_europe,1000000,0
+Kallakurichi,in,outside_europe,1682687,0
+Basrah,iq,outside_europe,1326564,0
+Ra’s Bayrūt,lb,outside_europe,1251739,0
+Zamboanga,ph,outside_europe,1018849,0
+Caloocan,ph,outside_europe,1712945,0
+Budta,ph,outside_europe,1273715,0
+Malingao,ph,outside_europe,1121974,0
+Nizhniy Novgorod,ru,europe,1259013,0
+Krasnoyarsk,ru,europe,1090811,0
+Khartoum North,sd,outside_europe,1012211,0
+Nuku‘alofa,to,outside_europe,22400,0
+New Taipei City,tw,outside_europe,4004367,0
+Vatican City,va,europe,829,0
+Port-Vila,vu,outside_europe,35901,0

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-01T09:26:53+00:00",
+  "generated_at": "2026-10-01T11:44:44+00:00",
   "episode_count": 382,
   "cooldown_episodes": 100,
   "regions": {
@@ -105,7 +105,7 @@
           "place": "Köpenhamn",
           "count": 6,
           "episodes_since_last_seen": 58,
-          "percentage": 1.6
+          "percentage": 1.7
         },
         {
           "place": "Trondheim",
@@ -117,30 +117,42 @@
           "place": "Prag",
           "count": 4,
           "episodes_since_last_seen": 82,
+          "percentage": 1.6
+        },
+        {
+          "place": "Luxemburg",
+          "count": 3,
+          "episodes_since_last_seen": 176,
+          "percentage": 1.5
+        },
+        {
+          "place": "Monaco",
+          "count": 3,
+          "episodes_since_last_seen": 137,
           "percentage": 1.5
         },
         {
           "place": "Edinburgh",
           "count": 5,
           "episodes_since_last_seen": 61,
-          "percentage": 1.4
+          "percentage": 1.5
         },
         {
-          "place": "Odense",
+          "place": "Valencia",
           "count": 3,
-          "episodes_since_last_seen": 116,
-          "percentage": 1.4
+          "episodes_since_last_seen": 142,
+          "percentage": 1.5
         },
         {
           "place": "Åbo",
           "count": 3,
           "episodes_since_last_seen": 105,
-          "percentage": 1.4
+          "percentage": 1.5
         },
         {
-          "place": "Salzburg",
+          "place": "Bologna",
           "count": 3,
-          "episodes_since_last_seen": 141,
+          "episodes_since_last_seen": 109,
           "percentage": 1.4
         },
         {
@@ -150,9 +162,9 @@
           "percentage": 1.4
         },
         {
-          "place": "Monaco",
+          "place": "Birmingham",
           "count": 3,
-          "episodes_since_last_seen": 137,
+          "episodes_since_last_seen": 100,
           "percentage": 1.4
         },
         {
@@ -162,34 +174,84 @@
           "percentage": 1.4
         },
         {
-          "place": "Krakow",
+          "place": "Salzburg",
           "count": 3,
-          "episodes_since_last_seen": 110,
+          "episodes_since_last_seen": 141,
           "percentage": 1.4
         },
         {
-          "place": "Bologna",
+          "place": "Sankt Petersburg",
           "count": 3,
-          "episodes_since_last_seen": 109,
+          "episodes_since_last_seen": 95,
           "percentage": 1.4
         },
         {
-          "place": "Birmingham",
+          "place": "Odense",
           "count": 3,
-          "episodes_since_last_seen": 100,
+          "episodes_since_last_seen": 116,
           "percentage": 1.4
+        }
+      ],
+      "wildcards": [
+        {
+          "place": "Volgograd",
+          "country_code": "ru",
+          "population": 1013533,
+          "fame": 15178
         },
         {
-          "place": "Luxemburg",
-          "count": 3,
-          "episodes_since_last_seen": 176,
-          "percentage": 1.4
+          "place": "Kazan",
+          "country_code": "ru",
+          "population": 1243500,
+          "fame": 12991
         },
         {
-          "place": "Valencia",
-          "count": 3,
-          "episodes_since_last_seen": 142,
-          "percentage": 1.4
+          "place": "Longyearbyen",
+          "country_code": "sj",
+          "population": 2368,
+          "fame": 12818
+        },
+        {
+          "place": "Tórshavn",
+          "country_code": "fo",
+          "population": 13200,
+          "fame": 10863
+        },
+        {
+          "place": "Pristina",
+          "country_code": "xk",
+          "population": 550000,
+          "fame": 9826
+        },
+        {
+          "place": "Novosibirsk",
+          "country_code": "ru",
+          "population": 1612833,
+          "fame": 7373
+        },
+        {
+          "place": "Podgorica",
+          "country_code": "me",
+          "population": 236852,
+          "fame": 6898
+        },
+        {
+          "place": "Omsk",
+          "country_code": "ru",
+          "population": 1172070,
+          "fame": 5247
+        },
+        {
+          "place": "Samara",
+          "country_code": "ru",
+          "population": 1163399,
+          "fame": 3606
+        },
+        {
+          "place": "Ufa",
+          "country_code": "ru",
+          "population": 1120547,
+          "fame": 3097
         }
       ]
     },
@@ -197,27 +259,27 @@
       "label": "Resten av världen",
       "predictions": [
         {
-          "place": "San Francisco",
-          "count": 5,
-          "episodes_since_last_seen": 61,
-          "percentage": 2.1
+          "place": "Singapore",
+          "count": 3,
+          "episodes_since_last_seen": 117,
+          "percentage": 2.3
         },
         {
           "place": "Jerusalem",
           "count": 3,
           "episodes_since_last_seen": 219,
-          "percentage": 2.1
+          "percentage": 2.2
         },
         {
-          "place": "Singapore",
-          "count": 3,
-          "episodes_since_last_seen": 117,
-          "percentage": 2.1
+          "place": "San Francisco",
+          "count": 5,
+          "episodes_since_last_seen": 61,
+          "percentage": 2.2
         },
         {
-          "place": "Melbourne",
+          "place": "Kuala Lumpur",
           "count": 3,
-          "episodes_since_last_seen": 200,
+          "episodes_since_last_seen": 127,
           "percentage": 2.1
         },
         {
@@ -227,22 +289,22 @@
           "percentage": 2.1
         },
         {
+          "place": "Melbourne",
+          "count": 3,
+          "episodes_since_last_seen": 200,
+          "percentage": 2.1
+        },
+        {
           "place": "Kingston",
           "count": 3,
           "episodes_since_last_seen": 111,
           "percentage": 2.1
         },
         {
-          "place": "Kuala Lumpur",
-          "count": 3,
-          "episodes_since_last_seen": 127,
-          "percentage": 2.1
-        },
-        {
           "place": "Los Angeles",
           "count": 4,
           "episodes_since_last_seen": 67,
-          "percentage": 1.9
+          "percentage": 2.0
         },
         {
           "place": "Havanna",
@@ -269,22 +331,84 @@
           "percentage": 1.5
         },
         {
-          "place": "Saigon",
+          "place": "New York",
+          "count": 6,
+          "episodes_since_last_seen": 32,
+          "percentage": 1.5
+        },
+        {
+          "place": "Beirut",
           "count": 2,
-          "episodes_since_last_seen": 209,
+          "episodes_since_last_seen": 164,
           "percentage": 1.4
         },
         {
-          "place": "Addis Abeba",
+          "place": "Damaskus",
           "count": 2,
-          "episodes_since_last_seen": 168,
+          "episodes_since_last_seen": 112,
           "percentage": 1.4
+        }
+      ],
+      "wildcards": [
+        {
+          "place": "Djibouti",
+          "country_code": "dj",
+          "population": 626512,
+          "fame": 20206
         },
         {
-          "place": "Tunis",
-          "count": 2,
-          "episodes_since_last_seen": 136,
-          "percentage": 1.4
+          "place": "Vientiane",
+          "country_code": "la",
+          "population": 840940,
+          "fame": 15890
+        },
+        {
+          "place": "Aleppo",
+          "country_code": "sy",
+          "population": 2098210,
+          "fame": 14217
+        },
+        {
+          "place": "Abidjan",
+          "country_code": "ci",
+          "population": 6321017,
+          "fame": 13371
+        },
+        {
+          "place": "Astana",
+          "country_code": "kz",
+          "population": 1544142,
+          "fame": 13210
+        },
+        {
+          "place": "Hiroshima",
+          "country_code": "jp",
+          "population": 1200754,
+          "fame": 11528
+        },
+        {
+          "place": "Doha",
+          "country_code": "qa",
+          "population": 344939,
+          "fame": 10981
+        },
+        {
+          "place": "Chongqing",
+          "country_code": "cn",
+          "population": 22000000,
+          "fame": 10921
+        },
+        {
+          "place": "New Delhi",
+          "country_code": "in",
+          "population": 317797,
+          "fame": 10203
+        },
+        {
+          "place": "Erbil",
+          "country_code": "iq",
+          "population": 1612700,
+          "fame": 9915
         }
       ]
     }
