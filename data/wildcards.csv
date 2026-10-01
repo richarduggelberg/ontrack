@@ -6,11 +6,8 @@ Aleppo,sy,outside_europe,2098210,14217
 Abidjan,ci,outside_europe,6321017,13371
 Astana,kz,outside_europe,1544142,13210
 Kazan,ru,europe,1243500,12991
-Longyearbyen,sj,europe,2368,12818
 Hiroshima,jp,outside_europe,1200754,11528
-Doha,qa,outside_europe,344939,10981
 Chongqing,cn,outside_europe,22000000,10921
-Tórshavn,fo,europe,13200,10863
 New Delhi,in,outside_europe,317797,10203
 Erbil,iq,outside_europe,1612700,9915
 Asmara,er,outside_europe,563930,9890
@@ -131,7 +128,6 @@ Santa Cruz de la Sierra,bo,outside_europe,1831434,1740
 Barranquilla,co,outside_europe,1206319,1670
 Belém,br,outside_europe,1499641,1661
 Sharjah,ae,outside_europe,1800000,1646
-Suva,fj,outside_europe,77366,1627
 Yaoundé,cm,outside_europe,1299369,1608
 Oranjestad,aw,outside_europe,29998,1526
 Haikou,cn,outside_europe,3001600,1524
@@ -349,7 +345,6 @@ Touba,sn,outside_europe,1120824,141
 Mata-Utu,wf,outside_europe,1200,141
 Xinyang,cn,outside_europe,1416800,140
 Onitsha,ng,outside_europe,1553000,140
-San Juan,pr,outside_europe,418140,140
 Kathmandu,np,outside_europe,1442271,135
 Kuwait City,kw,outside_europe,60064,130
 Weifang,cn,outside_europe,9386705,127

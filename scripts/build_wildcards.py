@@ -67,14 +67,19 @@ EXONYM_MAP = {
     "Havana": "Havanna",
     "Kyiv": "Kiev",
     "Odesa": "Odessa",
+    # Faroese spelling vs. the Swedish exonym the show/known-places list uses.
+    "Tórshavn": "Torshamn",
 }
 
 # GeoNames lists these as separate large-population "cities", but they're
 # boroughs/districts/sub-areas of a place already known to the show under a
 # different name (New York, Hong Kong, Budapest) - not genuine first-timers.
+# Longyearbyen is also here: the show's entry is "Svalbard" (the territory),
+# which doesn't textually match its capital city at all.
 EXCLUDE_NAMES = {
     "Pest", "Manhattan", "Brooklyn", "Queens", "The Bronx", "New York City",
     "Kowloon", "New Territories", "Hong Kong Island",
+    "Longyearbyen",
 }
 
 
@@ -91,6 +96,23 @@ def load_country_continents() -> dict:
     return mapping
 
 
+def load_country_capitals() -> dict:
+    """country name (lowercase) -> capital city name, for destinations the show
+    recorded as a country/territory name rather than a specific city (e.g.
+    "Fiji", "Qatar", "Puerto Rico") so their capital isn't mistaken for a
+    genuine first-timer."""
+    req = urllib.request.Request(COUNTRY_INFO_URL, headers={"User-Agent": USER_AGENT})
+    with urllib.request.urlopen(req) as resp:
+        text = resp.read().decode("utf-8")
+    mapping = {}
+    for line in text.splitlines():
+        if not line or line.startswith("#"):
+            continue
+        fields = line.split("\t")
+        mapping[fields[4].strip().lower()] = fields[5].strip()
+    return mapping
+
+
 def classify(country_code, continents) -> str:
     if country_code == "se":
         return "sweden"
@@ -99,10 +121,20 @@ def classify(country_code, continents) -> str:
 
 def main():
     continents = load_country_continents()
+    country_capitals = load_country_capitals()
 
     with REGIONS_CSV.open(encoding="utf-8") as f:
         known_places = {row["resmal"] for row in csv.DictReader(f)}
     known_normalized = {normalize(p) for p in known_places}
+
+    # Places the show recorded as a country/territory name (e.g. "Fiji",
+    # "Qatar") rather than a city - their capital would otherwise look like
+    # an unseen wildcard.
+    exclude_names = set(EXCLUDE_NAMES)
+    for place in known_places:
+        capital = country_capitals.get(place.lower())
+        if capital:
+            exclude_names.add(capital)
 
     print("Downloading GeoNames cities15000 dump...")
     req = urllib.request.Request(CITIES_ZIP_URL, headers={"User-Agent": USER_AGENT})
@@ -118,7 +150,7 @@ def main():
         country_code = fields[8].strip().lower()
         feature_code = fields[7]
         population = int(fields[14] or 0)
-        if country_code == "se" or name in known_places or name in EXCLUDE_NAMES:
+        if country_code == "se" or name in known_places or name in exclude_names:
             continue
         if normalize(name) in known_normalized:
             continue

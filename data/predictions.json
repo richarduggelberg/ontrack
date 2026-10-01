@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-01T11:44:44+00:00",
+  "generated_at": "2026-10-01T12:06:04+00:00",
   "episode_count": 382,
   "cooldown_episodes": 100,
   "regions": {
@@ -206,18 +206,6 @@
           "fame": 12991
         },
         {
-          "place": "Longyearbyen",
-          "country_code": "sj",
-          "population": 2368,
-          "fame": 12818
-        },
-        {
-          "place": "Tórshavn",
-          "country_code": "fo",
-          "population": 13200,
-          "fame": 10863
-        },
-        {
           "place": "Pristina",
           "country_code": "xk",
           "population": 550000,
@@ -252,6 +240,18 @@
           "country_code": "ru",
           "population": 1120547,
           "fame": 3097
+        },
+        {
+          "place": "Saint Petersburg",
+          "country_code": "ru",
+          "population": 5351935,
+          "fame": 1985
+        },
+        {
+          "place": "Saint Helier",
+          "country_code": "je",
+          "population": 28000,
+          "fame": 1175
         }
       ]
     },
@@ -387,12 +387,6 @@
           "fame": 11528
         },
         {
-          "place": "Doha",
-          "country_code": "qa",
-          "population": 344939,
-          "fame": 10981
-        },
-        {
           "place": "Chongqing",
           "country_code": "cn",
           "population": 22000000,
@@ -409,6 +403,12 @@
           "country_code": "iq",
           "population": 1612700,
           "fame": 9915
+        },
+        {
+          "place": "Asmara",
+          "country_code": "er",
+          "population": 563930,
+          "fame": 9890
         }
       ]
     }
