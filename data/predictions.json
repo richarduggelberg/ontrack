@@ -1,0 +1,292 @@
+{
+  "generated_at": "2026-10-01T08:57:43+00:00",
+  "episode_count": 382,
+  "cooldown_episodes": 20,
+  "regions": {
+    "sweden": {
+      "label": "Sverige",
+      "predictions": [
+        {
+          "place": "Norrköping",
+          "count": 7,
+          "episodes_since_last_seen": 42,
+          "percentage": 1.9
+        },
+        {
+          "place": "Lund",
+          "count": 7,
+          "episodes_since_last_seen": 30,
+          "percentage": 1.9
+        },
+        {
+          "place": "Uppsala",
+          "count": 7,
+          "episodes_since_last_seen": 26,
+          "percentage": 1.9
+        },
+        {
+          "place": "Malmö",
+          "count": 7,
+          "episodes_since_last_seen": 19,
+          "percentage": 1.8
+        },
+        {
+          "place": "Göteborg",
+          "count": 7,
+          "episodes_since_last_seen": 18,
+          "percentage": 1.7
+        },
+        {
+          "place": "Umeå",
+          "count": 6,
+          "episodes_since_last_seen": 25,
+          "percentage": 1.6
+        },
+        {
+          "place": "Gävle",
+          "count": 6,
+          "episodes_since_last_seen": 22,
+          "percentage": 1.6
+        },
+        {
+          "place": "Kalmar",
+          "count": 6,
+          "episodes_since_last_seen": 23,
+          "percentage": 1.6
+        },
+        {
+          "place": "Halmstad",
+          "count": 5,
+          "episodes_since_last_seen": 60,
+          "percentage": 1.3
+        },
+        {
+          "place": "Trollhättan",
+          "count": 5,
+          "episodes_since_last_seen": 47,
+          "percentage": 1.3
+        },
+        {
+          "place": "Skellefteå",
+          "count": 5,
+          "episodes_since_last_seen": 51,
+          "percentage": 1.3
+        },
+        {
+          "place": "Sundsvall",
+          "count": 5,
+          "episodes_since_last_seen": 52,
+          "percentage": 1.3
+        },
+        {
+          "place": "Varberg",
+          "count": 5,
+          "episodes_since_last_seen": 34,
+          "percentage": 1.3
+        },
+        {
+          "place": "Linköping",
+          "count": 5,
+          "episodes_since_last_seen": 82,
+          "percentage": 1.3
+        },
+        {
+          "place": "Visby",
+          "count": 5,
+          "episodes_since_last_seen": 58,
+          "percentage": 1.3
+        }
+      ]
+    },
+    "europe": {
+      "label": "Europa",
+      "predictions": [
+        {
+          "place": "London",
+          "count": 7,
+          "episodes_since_last_seen": 22,
+          "percentage": 2.0
+        },
+        {
+          "place": "Köpenhamn",
+          "count": 6,
+          "episodes_since_last_seen": 58,
+          "percentage": 1.7
+        },
+        {
+          "place": "Paris",
+          "count": 6,
+          "episodes_since_last_seen": 20,
+          "percentage": 1.7
+        },
+        {
+          "place": "Edinburgh",
+          "count": 5,
+          "episodes_since_last_seen": 61,
+          "percentage": 1.5
+        },
+        {
+          "place": "Reykjavik",
+          "count": 5,
+          "episodes_since_last_seen": 21,
+          "percentage": 1.5
+        },
+        {
+          "place": "Helsingfors",
+          "count": 6,
+          "episodes_since_last_seen": 15,
+          "percentage": 1.3
+        },
+        {
+          "place": "Rom",
+          "count": 5,
+          "episodes_since_last_seen": 17,
+          "percentage": 1.2
+        },
+        {
+          "place": "Roskilde",
+          "count": 4,
+          "episodes_since_last_seen": 53,
+          "percentage": 1.2
+        },
+        {
+          "place": "Hamburg",
+          "count": 4,
+          "episodes_since_last_seen": 49,
+          "percentage": 1.2
+        },
+        {
+          "place": "Prag",
+          "count": 4,
+          "episodes_since_last_seen": 82,
+          "percentage": 1.2
+        },
+        {
+          "place": "Glasgow",
+          "count": 4,
+          "episodes_since_last_seen": 73,
+          "percentage": 1.2
+        },
+        {
+          "place": "Trondheim",
+          "count": 4,
+          "episodes_since_last_seen": 84,
+          "percentage": 1.2
+        },
+        {
+          "place": "Tallinn",
+          "count": 4,
+          "episodes_since_last_seen": 38,
+          "percentage": 1.2
+        },
+        {
+          "place": "Budapest",
+          "count": 4,
+          "episodes_since_last_seen": 62,
+          "percentage": 1.2
+        },
+        {
+          "place": "Newcastle",
+          "count": 4,
+          "episodes_since_last_seen": 42,
+          "percentage": 1.2
+        }
+      ]
+    },
+    "outside_europe": {
+      "label": "Resten av världen",
+      "predictions": [
+        {
+          "place": "Istanbul",
+          "count": 6,
+          "episodes_since_last_seen": 32,
+          "percentage": 2.3
+        },
+        {
+          "place": "New York",
+          "count": 6,
+          "episodes_since_last_seen": 32,
+          "percentage": 2.3
+        },
+        {
+          "place": "Kairo",
+          "count": 5,
+          "episodes_since_last_seen": 27,
+          "percentage": 1.9
+        },
+        {
+          "place": "San Francisco",
+          "count": 5,
+          "episodes_since_last_seen": 61,
+          "percentage": 1.9
+        },
+        {
+          "place": "Washington",
+          "count": 5,
+          "episodes_since_last_seen": 31,
+          "percentage": 1.9
+        },
+        {
+          "place": "Bangkok",
+          "count": 5,
+          "episodes_since_last_seen": 19,
+          "percentage": 1.8
+        },
+        {
+          "place": "Nairobi",
+          "count": 4,
+          "episodes_since_last_seen": 41,
+          "percentage": 1.5
+        },
+        {
+          "place": "Havanna",
+          "count": 4,
+          "episodes_since_last_seen": 65,
+          "percentage": 1.5
+        },
+        {
+          "place": "Buenos Aires",
+          "count": 4,
+          "episodes_since_last_seen": 34,
+          "percentage": 1.5
+        },
+        {
+          "place": "Los Angeles",
+          "count": 4,
+          "episodes_since_last_seen": 67,
+          "percentage": 1.5
+        },
+        {
+          "place": "Las Vegas",
+          "count": 4,
+          "episodes_since_last_seen": 27,
+          "percentage": 1.5
+        },
+        {
+          "place": "Lima",
+          "count": 4,
+          "episodes_since_last_seen": 16,
+          "percentage": 1.2
+        },
+        {
+          "place": "Jerusalem",
+          "count": 3,
+          "episodes_since_last_seen": 219,
+          "percentage": 1.2
+        },
+        {
+          "place": "Kapstaden",
+          "count": 3,
+          "episodes_since_last_seen": 51,
+          "percentage": 1.2
+        },
+        {
+          "place": "Tokyo",
+          "count": 5,
+          "episodes_since_last_seen": 12,
+          "percentage": 1.2
+        }
+      ]
+    }
+  }
+}

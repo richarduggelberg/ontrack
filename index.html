@@ -1,25 +1,145 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sv">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>OnTrack</title>
+  <title>OnTrack – På spåret-förutsägelser</title>
   <style>
     body {
       margin: 0;
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      min-height: 100vh;
       background: #0d1117;
       color: #f0f6fc;
       font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
-      font-size: 2.5rem;
+    }
+    header {
+      text-align: center;
+      padding: 2rem 1rem 1rem;
+    }
+    header h1 {
+      margin: 0 0 0.25rem;
+      font-size: 2rem;
       font-weight: 600;
+    }
+    header p {
+      margin: 0;
+      color: #8b949e;
+      font-size: 0.95rem;
+    }
+    .columns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      justify-content: center;
+      padding: 1.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .column {
+      flex: 1 1 320px;
+      max-width: 380px;
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 10px;
+      padding: 1rem 1.25rem 1.25rem;
+    }
+    .column h2 {
+      font-size: 1.2rem;
+      margin: 0 0 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid #30363d;
+    }
+    ol {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    li {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.4rem 0;
+      border-bottom: 1px solid #21262d;
+    }
+    li:last-child { border-bottom: none; }
+    .rank {
+      color: #8b949e;
+      font-variant-numeric: tabular-nums;
+      width: 1.5rem;
+      text-align: right;
+      flex-shrink: 0;
+    }
+    .place {
+      flex: 1;
+    }
+    .pct {
+      font-variant-numeric: tabular-nums;
+      font-weight: 600;
+      color: #58a6ff;
+      flex-shrink: 0;
+    }
+    .status, footer {
+      text-align: center;
+      color: #8b949e;
+      padding: 1rem;
+      font-size: 0.85rem;
     }
   </style>
 </head>
 <body>
-  OnTrack
+  <header>
+    <h1>På spåret – nästa resmål</h1>
+    <p>Rangordnade förutsägelser baserat på historiska resmål, uppdelat på Sverige, Europa och resten av världen.</p>
+  </header>
+  <div class="columns" id="columns">
+    <p class="status">Laddar förutsägelser…</p>
+  </div>
+  <footer id="footer"></footer>
+
+  <script>
+    const REGION_ORDER = ["sweden", "europe", "outside_europe"];
+
+    async function loadPredictions() {
+      const columnsEl = document.getElementById("columns");
+      const footerEl = document.getElementById("footer");
+      try {
+        const res = await fetch("data/predictions.json", { cache: "no-store" });
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const data = await res.json();
+
+        columnsEl.innerHTML = "";
+        for (const key of REGION_ORDER) {
+          const region = data.regions[key];
+          if (!region) continue;
+          const col = document.createElement("div");
+          col.className = "column";
+
+          const h2 = document.createElement("h2");
+          h2.textContent = region.label;
+          col.appendChild(h2);
+
+          const ol = document.createElement("ol");
+          region.predictions.forEach((p, i) => {
+            const li = document.createElement("li");
+            li.innerHTML = `
+              <span class="rank">${i + 1}.</span>
+              <span class="place">${p.place}</span>
+              <span class="pct">${p.percentage}%</span>
+            `;
+            ol.appendChild(li);
+          });
+          col.appendChild(ol);
+          columnsEl.appendChild(col);
+        }
+
+        footerEl.textContent =
+          `Baserat på ${data.episode_count} avsnitt · uppdaterad ${new Date(data.generated_at).toLocaleString("sv-SE")}`;
+      } catch (err) {
+        columnsEl.innerHTML = `<p class="status">Kunde inte ladda förutsägelser (${err.message}).</p>`;
+      }
+    }
+
+    loadPredictions();
+  </script>
 </body>
 </html>

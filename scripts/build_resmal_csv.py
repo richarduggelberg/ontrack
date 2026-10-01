@@ -4,6 +4,7 @@
 Usage: python scripts/build_resmal_csv.py
 """
 import csv
+import html
 import re
 import urllib.request
 from pathlib import Path
@@ -29,6 +30,7 @@ def strip_wiki_markup(text: str) -> str:
     text = re.sub(r"<ref[^>]*>.*?</ref>", "", text, flags=re.DOTALL)
     text = re.sub(r"\{\{[^{}]*\}\}", "", text)
     text = re.sub(r"</?small>", "", text)
+    text = html.unescape(text).replace("\xa0", " ")
     return text.strip()
 
 

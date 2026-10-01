@@ -1,0 +1,541 @@
+resmal,country_code,region
+Abbey Road,gb,europe
+Aberdeen,gb,europe
+Abisko,se,sweden
+Abu Dhabi,ae,outside_europe
+Abuja,ng,outside_europe
+Acapulco,mx,outside_europe
+Addis Abeba,et,outside_europe
+Alexandria,it,outside_europe
+Alger,dz,outside_europe
+Alingsås,se,sweden
+Alvesta,se,sweden
+Amman,jo,outside_europe
+Amsterdam,nl,europe
+Anchorage,us,outside_europe
+Andorra la Vella,ad,europe
+Angkor Wat,kh,outside_europe
+Ankara,tr,outside_europe
+Antwerpen,be,europe
+Arboga,se,sweden
+Arjeplog,se,sweden
+Arvidsjaur,se,sweden
+Arvika,se,sweden
+Askersund,se,sweden
+Aspen,us,outside_europe
+Asunción,py,outside_europe
+Aten,gr,europe
+Atlanta,us,outside_europe
+Auckland,nz,outside_europe
+Austin,us,outside_europe
+Avesta,se,sweden
+Avignon,fr,europe
+Bagdad,iq,outside_europe
+Baku,az,outside_europe
+Bali,id,outside_europe
+Baltimore,us,outside_europe
+Bangkok,th,outside_europe
+Barcelona,es,europe
+Basel,ch,europe
+Bath,gb,europe
+Beirut,lb,outside_europe
+Belfast,gb,europe
+Belgrad,rs,europe
+Bergen,no,europe
+Berlin,de,europe
+Bern,ch,europe
+Betlehem,ps,outside_europe
+Bilbao,es,europe
+Birmingham,gb,europe
+"Blå moskén, Istanbul",,outside_europe
+Boden,de,sweden
+Bodø,no,europe
+Bogotá,co,outside_europe
+Bollnäs,se,sweden
+Bologna,it,europe
+Bombay,in,outside_europe
+Bombay (Mumbai),in,outside_europe
+Bordeaux,fr,europe
+Borgholm,se,sweden
+Borlänge,se,sweden
+Borås,se,sweden
+Boston,us,outside_europe
+Brasília,br,outside_europe
+Bratislava,sk,europe
+Bremen,de,europe
+Brighton,gb,europe
+Brisbane,au,outside_europe
+Bristol,gb,europe
+Bryssel,be,europe
+Budapest,hu,europe
+Buenos Aires,ar,outside_europe
+Bukarest,ro,europe
+Burj Khalifa,ae,outside_europe
+Båstad,se,sweden
+Calcutta,in,outside_europe
+Calgary,ca,outside_europe
+Cambridge,gb,europe
+Canberra,au,outside_europe
+Cancún,mx,outside_europe
+Cannes,fr,europe
+Cape Canaveral,us,outside_europe
+Capri,it,europe
+Cardiff,gb,europe
+Casablanca,ma,outside_europe
+Chicago,us,outside_europe
+Christchurch,nz,outside_europe
+Colombo,lk,outside_europe
+Cork,ie,europe
+Cypern,cy,europe
+Córdoba,es,europe
+Dakar,sn,outside_europe
+Dalhalla,se,sweden
+Dallas,us,outside_europe
+Damaskus,sy,outside_europe
+Dar es Salaam,tz,outside_europe
+Darwin,au,outside_europe
+Degerfors,se,sweden
+Delhi,in,outside_europe
+Denver,us,outside_europe
+Detroit,us,outside_europe
+Dover,gb,europe
+Dresden,de,europe
+Dubai,ae,outside_europe
+Dublin,ie,europe
+Dubrovnik,hr,europe
+Düsseldorf,de,europe
+Edinburgh,gb,europe
+Eksjö,se,sweden
+Emmaboda,se,sweden
+Enköping,se,sweden
+Eskilstuna,se,sweden
+Eslöv,se,sweden
+Fagersta,se,sweden
+Falkenberg,fr,sweden
+Falköping,se,sweden
+Falun,se,sweden
+Fiji,fj,outside_europe
+Filipstad,se,sweden
+Finspång,se,sweden
+Fjällbacka,se,sweden
+Florens,it,europe
+Fort Boyard,fr,europe
+Frankfurt am Main,de,europe
+Fredrikshamn,fi,europe
+Funchal,pt,europe
+Gaborone,bw,outside_europe
+Garmisch-Partenkirchen,de,europe
+Gdansk,pl,europe
+Gdańsk,pl,europe
+Genua,it,europe
+Genève,ch,europe
+Gibraltar,gi,europe
+Glasgow,gb,europe
+Gnesta,se,sweden
+Gnosjö,se,sweden
+Graceland,us,outside_europe
+Granada,es,europe
+Gränna,se,sweden
+Gällivare,se,sweden
+Gävle,se,sweden
+Gävlebocken,se,sweden
+Göteborg,se,sweden
+Haag,nl,europe
+Hagfors,se,sweden
+Halden,no,europe
+Hallsberg,se,sweden
+Halmstad,se,sweden
+Hamburg,de,europe
+Hammerfest,no,europe
+Hannover,de,europe
+Hanoi,vn,outside_europe
+Haparanda,se,sweden
+Hastings,gb,europe
+Havanna,cu,outside_europe
+Hedemora,se,sweden
+Helsingborg,se,sweden
+Helsingfors,fi,europe
+Helsingör,dk,europe
+Helvetesporten,se,sweden
+Heraklion,eg,europe
+Himmelska fridens torg,cn,outside_europe
+Hjo,se,sweden
+Ho Chi Minh-staden,vn,outside_europe
+Hoburgsgubben,se,sweden
+Hollywoodskylten,,outside_europe
+Hong Kong,cn,outside_europe
+Hongkong,cn,outside_europe
+Honolulu,us,outside_europe
+Houston,us,outside_europe
+Hudiksvall,se,sweden
+Hultsfred,se,sweden
+Huskvarna,se,sweden
+Härnösand,se,sweden
+Hässleholm,se,sweden
+Höganäs,se,sweden
+Ibiza,es,europe
+Indianapolis,us,outside_europe
+Innsbruck,at,europe
+Islamabad,pk,outside_europe
+Istanbul,tr,outside_europe
+Jakarta,id,outside_europe
+Jerusalem,il,outside_europe
+Johannesburg,za,outside_europe
+Jokkmokk,se,sweden
+Jukkasjärvi,se,sweden
+Järvsö,se,sweden
+Jönköping,se,sweden
+Kabul,af,outside_europe
+Kairo,eg,outside_europe
+Kalix,se,sweden
+Kalmar,se,sweden
+Kampala,ug,outside_europe
+Kanarieöarna,es,europe
+Kapstaden,za,outside_europe
+Karlshamn,se,sweden
+Karlskoga,se,sweden
+Karlskrona,se,sweden
+Karlstad,se,sweden
+Katmandu,np,outside_europe
+Katrineholm,se,sweden
+Key West,us,outside_europe
+Khartoum,sd,outside_europe
+Kiev,ua,europe
+Kilimanjaro,tz,outside_europe
+Kingston,jm,outside_europe
+Kinshasa,cd,outside_europe
+Kiruna,se,sweden
+Kiruna kyrka,se,sweden
+Kivik,se,sweden
+Konungarnas dal,,outside_europe
+Korfu,gr,europe
+Krakow,pl,europe
+Kraków,pl,europe
+Kramfors,se,sweden
+Kreta,gr,europe
+Kristianstad,se,sweden
+Kristinehamn,se,sweden
+Kuala Lumpur,my,outside_europe
+Kumla,se,sweden
+Kungens kurva,se,sweden
+Kungsbacka,se,sweden
+Kungälv,se,sweden
+Kyoto,jp,outside_europe
+Köln,de,europe
+Köpenhamn,dk,europe
+Köping,se,sweden
+La Paz,bo,outside_europe
+Lagos,ng,outside_europe
+Laholm,se,sweden
+Lakehurst,us,outside_europe
+Landskrona,se,sweden
+Lapporten,se,sweden
+Las Palmas,es,europe
+Las Vegas,us,outside_europe
+Lausanne,ch,europe
+Leeds,gb,europe
+Leipzig,de,europe
+Leksand,se,sweden
+Lidingö,se,sweden
+Lidköping,se,sweden
+Lillehammer,no,europe
+Lima,pe,outside_europe
+Limerick,ie,europe
+Linköping,se,sweden
+Lissabon,pt,europe
+Liverpool,gb,europe
+Ljubljana,si,europe
+Ljungby,se,sweden
+Ljusdal,se,sweden
+London,gb,europe
+Los Angeles,us,outside_europe
+Louvren i Paris,,europe
+Ludvika,se,sweden
+Luleå,se,sweden
+Lund,se,sweden
+Lusail Iconic Stadium,,outside_europe
+Lusaka,zm,outside_europe
+Lutande tornet i Pisa,it,europe
+Luxemburg,lu,europe
+Lycksele,se,sweden
+Lyon,fr,europe
+Lysekil,se,sweden
+Lübeck,de,europe
+Lützen,de,europe
+Macao,cn,outside_europe
+Machu Picchu,pe,outside_europe
+Madeira,pt,europe
+Madrid,es,europe
+Malaga,es,europe
+Malmö,se,sweden
+Malung,us,sweden
+Manchester,gb,europe
+Manila,ph,outside_europe
+Maputo,mz,outside_europe
+Marbella,es,europe
+Marianergraven,,outside_europe
+Mariefred,se,sweden
+Mariehamn,fi,europe
+Mariestad,se,sweden
+Marrakech,ma,outside_europe
+Marseille,fr,europe
+Marstrand,se,sweden
+Matterhorn,ch,europe
+Mecka,sa,outside_europe
+Melbourne,au,outside_europe
+Memphis,us,outside_europe
+Mexico City,mx,outside_europe
+Miami,us,outside_europe
+Milano,it,europe
+Milwaukee,us,outside_europe
+Minneapolis,us,outside_europe
+Minsk,by,europe
+Mjölby,se,sweden
+Mogadishu,so,outside_europe
+Monaco,mc,europe
+Monte Carlo,mc,europe
+Montevideo,uy,outside_europe
+Montreal,ca,outside_europe
+Montreux,ch,europe
+Montréal,ca,outside_europe
+Mora,es,sweden
+Moskva,ru,europe
+Motala,se,sweden
+Mount Everest,np,outside_europe
+Mount Rushmore,us,outside_europe
+Muskat,om,outside_europe
+Málaga,es,europe
+Mölle,se,sweden
+Mölndal,se,sweden
+München,de,europe
+Nairobi,ke,outside_europe
+Narvik,no,europe
+Nasaret,il,outside_europe
+Nashville,us,outside_europe
+Nassau,bs,outside_europe
+Neapel,it,europe
+New Delhi,in,outside_europe
+New Orleans,us,outside_europe
+New York,us,outside_europe
+Newcastle,gb,europe
+Niagarafallen,,outside_europe
+Nice,fr,europe
+Nicosia,cy,europe
+Nimis,it,europe
+Nora,se,sweden
+Norje,se,sweden
+Norrköping,se,sweden
+Norrtälje,se,sweden
+Nottingham,gb,europe
+Nuuk,gl,outside_europe
+Nyköping,se,sweden
+Nässjö,se,sweden
+Nürnberg,de,europe
+Oakland,us,outside_europe
+Odense,dk,europe
+Odessa,ua,europe
+Omaha Beach,us,europe
+Orlando,us,outside_europe
+Orsa,se,sweden
+Osaka,jp,outside_europe
+Osby,se,sweden
+Oskarshamn,se,sweden
+Oslo,no,europe
+Ottawa,ca,outside_europe
+Oxford,gb,europe
+Pajala,se,sweden
+Palais des Festivals et des Congrès,fr,europe
+Palermo,it,europe
+Palma,es,europe
+Palma de Mallorca,es,europe
+Panama City,us,outside_europe
+Paris,fr,europe
+Parma,it,europe
+Parthenon,us,europe
+Partille,se,sweden
+Peking,cn,outside_europe
+Pentagon,us,outside_europe
+Petra,jo,outside_europe
+Philadelphia,us,outside_europe
+Phnom Penh,kh,outside_europe
+Phoenix,us,outside_europe
+Phuket,th,outside_europe
+Pisa,it,europe
+Piteå,se,sweden
+Pittsburgh,us,outside_europe
+Plymouth,gb,europe
+Pompeji,it,europe
+Portland,us,outside_europe
+Porto,pt,europe
+Prag,cz,europe
+Preikestolen,no,europe
+Pretoria,za,outside_europe
+Puerto Rico,us,outside_europe
+Pyongyang,kp,outside_europe
+Pyonyang,,outside_europe
+Pyramiderna,se,outside_europe
+Påskön,cl,outside_europe
+Qatar,qa,outside_europe
+Quebec,ca,outside_europe
+Quito,ec,outside_europe
+Rabat,ma,outside_europe
+Reykjavik,is,europe
+Rhodos,gr,europe
+Riga,lv,europe
+Rio de Janeiro,br,outside_europe
+Rom,it,europe
+Roskilde,dk,europe
+Rotterdam,nl,europe
+Rovaniemi,fi,europe
+Rättvik,se,sweden
+Saigon,vn,outside_europe
+Saint Louis,us,outside_europe
+Sala,id,sweden
+Salt Lake City,us,outside_europe
+Salzburg,at,europe
+San Diego,us,outside_europe
+San Francisco,us,outside_europe
+San José,cr,outside_europe
+San Marino,sm,europe
+San Salvador,sv,outside_europe
+Sandhamn,fi,sweden
+Sandviken,se,sweden
+Sankt Petersburg,ru,europe
+Santiago,cr,outside_europe
+Santiago de Chile,cl,outside_europe
+Sarajevo,ba,europe
+Seattle,us,outside_europe
+Seoul,kr,outside_europe
+Seoul (Söul),kr,outside_europe
+Sevilla,es,europe
+Shanghai,cn,outside_europe
+Sheffield,gb,europe
+Sigtuna,se,sweden
+Simrishamn,se,sweden
+Singapore,sg,outside_europe
+Skagen,dk,europe
+Skanör-Falsterbo,se,sweden
+Skara,se,sweden
+Skellefteå,se,sweden
+Skopje,mk,europe
+Skövde,se,sweden
+Slottet Bran,,europe
+Smögen,se,sweden
+Sofia,bg,europe
+Sollefteå,se,sweden
+Solliden,se,sweden
+Solna,sk,sweden
+Southampton,gb,europe
+Split,hr,europe
+Stavanger,no,europe
+Stenungsund,se,sweden
+Stockholm,se,sweden
+Stonehenge,gb,europe
+Strasbourg,fr,europe
+Strängnäs,se,sweden
+Strömstad,se,sweden
+Stuttgart,de,europe
+Suezkanalen,eg,outside_europe
+Sundborn,se,sweden
+Sundsvall,se,sweden
+Sunne,se,sweden
+Svalbard,no,europe
+Sveg,se,sweden
+Sydney,au,outside_europe
+Syrakusa,it,europe
+São Paulo,br,outside_europe
+Säffle,se,sweden
+Sälen,se,sweden
+Söderhamn,se,sweden
+Södertälje,se,sweden
+Sölvesborg,se,sweden
+Taipei,tw,outside_europe
+Taj Mahal,in,outside_europe
+Tallinn,ee,europe
+Tammerfors,fi,europe
+Tbilisi,ge,outside_europe
+Teheran,ir,outside_europe
+Tel Aviv,il,outside_europe
+Tengah,sg,outside_europe
+Tennessee,us,outside_europe
+Terrakottarmén i Xi'an,,outside_europe
+Thessaloniki,gr,europe
+Tijuana,mx,outside_europe
+Times Square,us,outside_europe
+Tirana,al,europe
+Titanic,cz,europe
+Tokyo,jp,outside_europe
+Tomelilla,se,sweden
+Torekov,se,sweden
+Toronto,ca,outside_europe
+Torsby,se,sweden
+Torshamn,fo,europe
+Toulouse,fr,europe
+Tranås,se,sweden
+Trelleborg,se,sweden
+Trevifontänen i Rom,,europe
+Trollhättan,se,sweden
+Tromsö,no,europe
+Tromsø,no,europe
+Trondheim,no,europe
+Trosa,se,sweden
+Tunis,tn,outside_europe
+Turin,it,europe
+Uddevalla,se,sweden
+Ulan Bator,mn,outside_europe
+Ullared,se,sweden
+Ulricehamn,se,sweden
+Uluru,au,outside_europe
+Umeå,se,sweden
+Uppsala,se,sweden
+Uppsala domkyrka,se,sweden
+Vadstena,se,sweden
+Vaduz,li,europe
+Valencia,es,europe
+Valletta,mt,europe
+Valparaíso,cl,outside_europe
+Vancouver,ca,outside_europe
+Vansbro,se,sweden
+Varberg,se,sweden
+Vasa,fi,europe
+Vaxholm,se,sweden
+Venedig,it,europe
+Verona,it,europe
+Vetlanda,se,sweden
+Vilhelmina,se,sweden
+Vilnius,lt,europe
+Vimmerby,se,sweden
+Visby,se,sweden
+Vitön,no,europe
+Vänersborg,se,sweden
+Värnamo,se,sweden
+Västervik,se,sweden
+Västerås,se,sweden
+Växjö,se,sweden
+Warszawa,pl,europe
+Washington,us,outside_europe
+"Washington, D.C.",us,outside_europe
+Waterloo,us,europe
+Wellington,nz,outside_europe
+Wien,at,europe
+Wimbledon,gb,europe
+Woodstockfestivalen,,outside_europe
+Wuhan,cn,outside_europe
+York,gb,europe
+Ystad,se,sweden
+Zagreb,hr,europe
+Zanzibar,tz,outside_europe
+Zürich,ch,europe
+Älmhult,se,sweden
+Ängelholm,se,sweden
+Åbo,fi,europe
+Åhus,se,sweden
+Ålborg,dk,europe
+Ålborg (Aalborg),dk,europe
+Åmål,se,sweden
+Åre,se,sweden
+Århus,dk,europe
+Ön Iwo Jima i Japan,,outside_europe
+Örebro,se,sweden
+Örnsköldsvik,se,sweden
+Östersund,se,sweden
