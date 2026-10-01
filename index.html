@@ -71,6 +71,15 @@
     }
     .place {
       flex: 1;
+      min-width: 0;
+    }
+    .place-name {
+      display: block;
+    }
+    .meta {
+      display: block;
+      color: #8b949e;
+      font-size: 0.75rem;
     }
     .pct {
       font-variant-numeric: tabular-nums;
@@ -157,7 +166,10 @@
             const li = document.createElement("li");
             li.innerHTML = `
               <span class="rank">${i + 1}.</span>
-              <span class="place">${p.place}</span>
+              <span class="place">
+                <span class="place-name">${p.place}</span>
+                <span class="meta">×${p.count} · ${p.episodes_since_last_seen} avsnitt sedan</span>
+              </span>
               <span class="pct">${p.percentage}%</span>
             `;
             ol.appendChild(li);
