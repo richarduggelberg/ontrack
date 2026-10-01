@@ -13,6 +13,14 @@ So a place that appeared recently is strongly suppressed; it recovers back
 to full weight once ~COOLDOWN_EPISODES have passed without it reappearing.
 Within each region, weights are normalised to percentages.
 
+COOLDOWN_EPISODES=100 was chosen by walk-forward backtesting (see
+scripts/backtest_predictions.py) over seasons 33-37: it roughly halves
+the median rank of the actual destination vs. the original guess of 20
+(e.g. outside-Europe top-15 hit rate 21% -> 33%). Even so, the model's
+accuracy is modest - run the backtest script for current numbers - since
+a meaningful share of real picks are long-tail or first-ever appearances
+no history-based model can anticipate.
+
 The candidate pool and historical_count are based only on the main "resa"
 destinations. But "episodes_since_last_seen" also counts appearances in
 the tintin_haddock / narmast_vinner bonus segments: a place flagged there
@@ -32,7 +40,7 @@ RESMAL_CSV = ROOT / "data" / "resmal.csv"
 REGIONS_CSV = ROOT / "data" / "resmal_regions.csv"
 OUT_PATH = ROOT / "data" / "predictions.json"
 
-COOLDOWN_EPISODES = 20
+COOLDOWN_EPISODES = 100
 TOP_N = 15
 
 REGION_LABELS = {
