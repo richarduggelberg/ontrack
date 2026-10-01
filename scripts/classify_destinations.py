@@ -34,6 +34,9 @@ REGION_OVERRIDES = {
     "Sala": "sweden",              # resolved to Indonesia
     "Sandhamn": "sweden",          # resolved to Finland
     "Solna": "sweden",             # resolved to Slovakia
+    "Santiago": "europe",          # resolved to Costa Rica; likely Santiago de Compostela
+    "Nimis": "sweden",            # resolved to a town in Italy; means the Kullaberg sculpture
+    "Vitön": "sweden",            # resolved to Norway; it's a Höga Kusten island
     "Alexandria": "outside_europe",  # resolved to Italy; show means Egypt
     "Heraklion": "europe",        # resolved to Egypt; it's in Crete, Greece
     "Niagarafallen": "outside_europe",
@@ -43,7 +46,8 @@ REGION_OVERRIDES = {
     "Pyonyang": "outside_europe",     # typo for Pyongyang, unresolved
     "Titanic": "europe",              # resolved to Czech Republic; likely Titanic Belfast
     "Waterloo": "europe",             # resolved to the US; likely the Belgian battlefield
-    "Blå moskén, Istanbul": "outside_europe",
+    "Istanbul": "europe",            # Turkey is geonames-Asia, but its major sights sit on the European side of the Bosphorus
+    "Blå moskén, Istanbul": "europe",
     "Hollywoodskylten": "outside_europe",
     "Konungarnas dal": "outside_europe",
     "Louvren i Paris": "europe",

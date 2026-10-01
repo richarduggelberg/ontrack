@@ -23,6 +23,23 @@ MONTHS = {
 SEASON_RE = re.compile(r"^==\s*S[äa]song\s+(\d+)\s*(?:\(([^)]*)\))?\s*==", re.MULTILINE)
 DATE_RE = re.compile(r"(\d{1,2})\s+(" + "|".join(MONTHS) + r")\s+(\d{4})")
 
+# Same real-world place written differently across episodes/seasons; collapse
+# to one canonical spelling so frequency counts aren't split across variants.
+PLACE_ALIASES = {
+    "Ålborg (Aalborg)": "Ålborg",
+    "Bombay (Mumbai)": "Bombay",
+    "Gdańsk": "Gdansk",
+    "Hongkong": "Hong Kong",
+    "Kraków": "Krakow",
+    "Málaga": "Malaga",
+    "Montréal": "Montreal",
+    "Seoul (Söul)": "Seoul",
+    "Tromsø": "Tromsö",
+    "Palma de Mallorca": "Palma",
+    "Washington, D.C.": "Washington",
+    "New Delhi": "Delhi",
+}
+
 
 def strip_wiki_markup(text: str) -> str:
     """Strip refs/templates/small-tags and return the human-readable display text."""
@@ -210,6 +227,7 @@ def main():
 
             def add_rows(dests, typ):
                 for order, dest in enumerate(dests, start=1):
+                    dest = PLACE_ALIASES.get(dest, dest)
                     out_rows.append({
                         "sasong": season_num,
                         "sasong_ar": season_label,

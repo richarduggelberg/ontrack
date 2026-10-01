@@ -47,14 +47,13 @@ Bern,ch,europe
 Betlehem,ps,outside_europe
 Bilbao,es,europe
 Birmingham,gb,europe
-"Blå moskén, Istanbul",,outside_europe
+"Blå moskén, Istanbul",,europe
 Boden,de,sweden
 Bodø,no,europe
 Bogotá,co,outside_europe
 Bollnäs,se,sweden
 Bologna,it,europe
 Bombay,in,outside_europe
-Bombay (Mumbai),in,outside_europe
 Bordeaux,fr,europe
 Borgholm,se,sweden
 Borlänge,se,sweden
@@ -126,7 +125,6 @@ Funchal,pt,europe
 Gaborone,bw,outside_europe
 Garmisch-Partenkirchen,de,europe
 Gdansk,pl,europe
-Gdańsk,pl,europe
 Genua,it,europe
 Genève,ch,europe
 Gibraltar,gi,europe
@@ -164,7 +162,6 @@ Ho Chi Minh-staden,vn,outside_europe
 Hoburgsgubben,se,sweden
 Hollywoodskylten,,outside_europe
 Hong Kong,cn,outside_europe
-Hongkong,cn,outside_europe
 Honolulu,us,outside_europe
 Houston,us,outside_europe
 Hudiksvall,se,sweden
@@ -177,7 +174,7 @@ Ibiza,es,europe
 Indianapolis,us,outside_europe
 Innsbruck,at,europe
 Islamabad,pk,outside_europe
-Istanbul,tr,outside_europe
+Istanbul,tr,europe
 Jakarta,id,outside_europe
 Jerusalem,il,outside_europe
 Johannesburg,za,outside_europe
@@ -210,7 +207,6 @@ Kivik,se,sweden
 Konungarnas dal,,outside_europe
 Korfu,gr,europe
 Krakow,pl,europe
-Kraków,pl,europe
 Kramfors,se,sweden
 Kreta,gr,europe
 Kristianstad,se,sweden
@@ -297,14 +293,12 @@ Monte Carlo,mc,europe
 Montevideo,uy,outside_europe
 Montreal,ca,outside_europe
 Montreux,ch,europe
-Montréal,ca,outside_europe
 Mora,es,sweden
 Moskva,ru,europe
 Motala,se,sweden
 Mount Everest,np,outside_europe
 Mount Rushmore,us,outside_europe
 Muskat,om,outside_europe
-Málaga,es,europe
 Mölle,se,sweden
 Mölndal,se,sweden
 München,de,europe
@@ -314,14 +308,13 @@ Nasaret,il,outside_europe
 Nashville,us,outside_europe
 Nassau,bs,outside_europe
 Neapel,it,europe
-New Delhi,in,outside_europe
 New Orleans,us,outside_europe
 New York,us,outside_europe
 Newcastle,gb,europe
 Niagarafallen,,outside_europe
 Nice,fr,europe
 Nicosia,cy,europe
-Nimis,it,europe
+Nimis,it,sweden
 Nora,se,sweden
 Norje,se,sweden
 Norrköping,se,sweden
@@ -347,7 +340,6 @@ Pajala,se,sweden
 Palais des Festivals et des Congrès,fr,europe
 Palermo,it,europe
 Palma,es,europe
-Palma de Mallorca,es,europe
 Panama City,us,outside_europe
 Paris,fr,europe
 Parma,it,europe
@@ -401,12 +393,11 @@ San Salvador,sv,outside_europe
 Sandhamn,fi,sweden
 Sandviken,se,sweden
 Sankt Petersburg,ru,europe
-Santiago,cr,outside_europe
+Santiago,cr,europe
 Santiago de Chile,cl,outside_europe
 Sarajevo,ba,europe
 Seattle,us,outside_europe
 Seoul,kr,outside_europe
-Seoul (Söul),kr,outside_europe
 Sevilla,es,europe
 Shanghai,cn,outside_europe
 Sheffield,gb,europe
@@ -476,7 +467,6 @@ Trelleborg,se,sweden
 Trevifontänen i Rom,,europe
 Trollhättan,se,sweden
 Tromsö,no,europe
-Tromsø,no,europe
 Trondheim,no,europe
 Trosa,se,sweden
 Tunis,tn,outside_europe
@@ -506,7 +496,7 @@ Vilhelmina,se,sweden
 Vilnius,lt,europe
 Vimmerby,se,sweden
 Visby,se,sweden
-Vitön,no,europe
+Vitön,no,sweden
 Vänersborg,se,sweden
 Värnamo,se,sweden
 Västervik,se,sweden
@@ -514,7 +504,6 @@ Västerås,se,sweden
 Växjö,se,sweden
 Warszawa,pl,europe
 Washington,us,outside_europe
-"Washington, D.C.",us,outside_europe
 Waterloo,us,europe
 Wellington,nz,outside_europe
 Wien,at,europe
@@ -531,7 +520,6 @@ Zürich,ch,europe
 Åbo,fi,europe
 Åhus,se,sweden
 Ålborg,dk,europe
-Ålborg (Aalborg),dk,europe
 Åmål,se,sweden
 Åre,se,sweden
 Århus,dk,europe

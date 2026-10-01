@@ -99,11 +99,11 @@ sasong,sasong_ar,avsnitt,datum,matchtyp,typ,ordning,resmal
 8,1997,3,1997-09-19,,tintin_haddock,1,Sundsvall
 8,1997,4,1997-09-26,,resa,1,Belfast
 8,1997,4,1997-09-26,,resa,2,Falköping
-8,1997,4,1997-09-26,,resa,3,Palma de Mallorca
+8,1997,4,1997-09-26,,resa,3,Palma
 8,1997,4,1997-09-26,,tintin_haddock,1,Rio de Janeiro
 8,1997,5,1997-10-03,,resa,1,Sevilla
 8,1997,5,1997-10-03,,resa,2,Kumla
-8,1997,5,1997-10-03,,resa,3,Kraków
+8,1997,5,1997-10-03,,resa,3,Krakow
 8,1997,5,1997-10-03,,tintin_haddock,1,Singapore
 8,1997,6,1997-10-10,,resa,1,Brighton
 8,1997,6,1997-10-10,,resa,2,Vaxholm
@@ -198,7 +198,7 @@ sasong,sasong_ar,avsnitt,datum,matchtyp,typ,ordning,resmal
 11,2000–2001,4,2001-01-12,,resa,3,Trondheim
 11,2000–2001,5,2001-01-19,,resa,1,Gävle
 11,2000–2001,5,2001-01-19,,resa,2,Plymouth
-11,2000–2001,5,2001-01-19,,resa,3,Bombay (Mumbai)
+11,2000–2001,5,2001-01-19,,resa,3,Bombay
 11,2000–2001,6,2001-01-26,,resa,1,Marrakech
 11,2000–2001,6,2001-01-26,,resa,2,Kalmar
 11,2000–2001,6,2001-01-26,,resa,3,Tallinn
@@ -230,7 +230,7 @@ sasong,sasong_ar,avsnitt,datum,matchtyp,typ,ordning,resmal
 12,2001,6,2001-11-30,,resa,2,Filipstad
 12,2001,6,2001-11-30,,resa,3,Sofia
 12,2001,7,2001-12-07,,resa,1,Addis Abeba
-12,2001,7,2001-12-07,,resa,2,Tromsø
+12,2001,7,2001-12-07,,resa,2,Tromsö
 12,2001,7,2001-12-07,,resa,3,Kungsbacka
 12,2001,8,2001-12-14,,resa,1,Aberdeen
 12,2001,8,2001-12-14,,resa,2,Örnsköldsvik
@@ -245,7 +245,7 @@ sasong,sasong_ar,avsnitt,datum,matchtyp,typ,ordning,resmal
 13,2002–2003,2,2002-11-22,,resa,2,Borlänge
 13,2002–2003,2,2002-11-22,,resa,3,Gdansk
 13,2002–2003,3,2002-11-29,,resa,1,Varberg
-13,2002–2003,3,2002-11-29,,resa,2,Ålborg (Aalborg)
+13,2002–2003,3,2002-11-29,,resa,2,Ålborg
 13,2002–2003,3,2002-11-29,,resa,3,Ankara
 13,2002–2003,4,2002-12-06,,resa,1,Lyon
 13,2002–2003,4,2002-12-06,,resa,2,Madeira
@@ -264,7 +264,7 @@ sasong,sasong_ar,avsnitt,datum,matchtyp,typ,ordning,resmal
 13,2002–2003,8,2003-01-03,,resa,3,Jakarta
 13,2002–2003,9,2003-01-10,,resa,1,Milano
 13,2002–2003,9,2003-01-10,,resa,2,Nässjö
-13,2002–2003,9,2003-01-10,,resa,3,Seoul (Söul)
+13,2002–2003,9,2003-01-10,,resa,3,Seoul
 14,2003–2004,1,2003-11-14,,resa,1,Los Angeles
 14,2003–2004,1,2003-11-14,,resa,2,Florens
 14,2003–2004,1,2003-11-14,,resa,3,Hedemora
@@ -277,7 +277,7 @@ sasong,sasong_ar,avsnitt,datum,matchtyp,typ,ordning,resmal
 14,2003–2004,4,2003-12-05,,resa,1,Haag
 14,2003–2004,4,2003-12-05,,resa,2,Tunis
 14,2003–2004,4,2003-12-05,,resa,3,Ljungby
-14,2003–2004,5,2003-12-12,,resa,1,New Delhi
+14,2003–2004,5,2003-12-12,,resa,1,Delhi
 14,2003–2004,5,2003-12-12,,resa,2,Haparanda
 14,2003–2004,5,2003-12-12,,resa,3,Stuttgart
 14,2003–2004,6,2003-12-19,,resa,1,Dar es Salaam
@@ -391,7 +391,7 @@ sasong,sasong_ar,avsnitt,datum,matchtyp,typ,ordning,resmal
 17,2006–2007,11,2007-01-13,,resa,1,Mariestad
 17,2006–2007,11,2007-01-13,,resa,2,Sankt Petersburg
 17,2006–2007,11,2007-01-13,,resa,3,Heraklion
-17,2006–2007,12,2007-01-20,,resa,1,Palma de Mallorca
+17,2006–2007,12,2007-01-20,,resa,1,Palma
 17,2006–2007,12,2007-01-20,,resa,2,Piteå
 17,2006–2007,12,2007-01-20,,resa,3,Arboga
 17,2006–2007,13,2007-01-27,,resa,1,Bollnäs
@@ -494,7 +494,7 @@ sasong,sasong_ar,avsnitt,datum,matchtyp,typ,ordning,resmal
 20,2009–2010,6,2010-01-08,,resa,2,Varberg
 20,2009–2010,6,2010-01-08,,resa,3,Eskilstuna
 20,2009–2010,7,2010-01-15,,resa,1,Kivik
-20,2009–2010,7,2010-01-15,,resa,2,Málaga
+20,2009–2010,7,2010-01-15,,resa,2,Malaga
 20,2009–2010,7,2010-01-15,,resa,3,Chicago
 20,2009–2010,8,2010-01-22,,resa,1,Lima
 20,2009–2010,8,2010-01-22,,resa,2,Sala
@@ -504,7 +504,7 @@ sasong,sasong_ar,avsnitt,datum,matchtyp,typ,ordning,resmal
 20,2009–2010,9,2010-01-29,,resa,3,Amman
 20,2009–2010,10,2010-02-05,,resa,1,Jerusalem
 20,2009–2010,10,2010-02-05,,resa,2,Örnsköldsvik
-20,2009–2010,10,2010-02-05,,resa,3,Tromsø
+20,2009–2010,10,2010-02-05,,resa,3,Tromsö
 20,2009–2010,11,2010-02-12,,resa,1,Orsa
 20,2009–2010,11,2010-02-12,,resa,2,Bilbao
 20,2009–2010,11,2010-02-12,,resa,3,Hannover
@@ -529,7 +529,7 @@ sasong,sasong_ar,avsnitt,datum,matchtyp,typ,ordning,resmal
 21,2010–2011,5,2011-01-14,,resa,1,Miami
 21,2010–2011,5,2011-01-14,,resa,2,Madrid
 21,2010–2011,5,2011-01-14,,resa,3,Tomelilla
-21,2010–2011,6,2011-01-21,,resa,1,Hongkong
+21,2010–2011,6,2011-01-21,,resa,1,Hong Kong
 21,2010–2011,6,2011-01-21,,resa,2,Lysekil
 21,2010–2011,6,2011-01-21,,resa,3,Birmingham
 21,2010–2011,7,2011-01-28,,resa,1,Vancouver
@@ -572,7 +572,7 @@ sasong,sasong_ar,avsnitt,datum,matchtyp,typ,ordning,resmal
 22,2011–2012,6,2011-12-30,,resa,2,Kuala Lumpur
 22,2011–2012,6,2011-12-30,,resa,3,Ängelholm
 22,2011–2012,7,2012-01-06,,resa,1,Bryssel
-22,2011–2012,7,2012-01-06,,resa,2,New Delhi
+22,2011–2012,7,2012-01-06,,resa,2,Delhi
 22,2011–2012,7,2012-01-06,,resa,3,Filipstad
 22,2011–2012,8,2012-01-13,,resa,1,Zürich
 22,2011–2012,8,2012-01-13,,resa,2,Härnösand
@@ -617,9 +617,9 @@ sasong,sasong_ar,avsnitt,datum,matchtyp,typ,ordning,resmal
 23,2012–2013,8,2013-01-11,,resa,2,Sofia
 23,2012–2013,8,2013-01-11,,resa,3,Berlin
 23,2012–2013,9,2013-01-18,,resa,1,Cardiff
-23,2012–2013,9,2013-01-18,,resa,2,Gdańsk
+23,2012–2013,9,2013-01-18,,resa,2,Gdansk
 23,2012–2013,9,2013-01-18,,resa,3,Visby
-23,2012–2013,10,2013-01-25,,resa,1,Palma de Mallorca
+23,2012–2013,10,2013-01-25,,resa,1,Palma
 23,2012–2013,10,2013-01-25,,resa,2,Lidköping
 23,2012–2013,10,2013-01-25,,resa,3,Los Angeles
 23,2012–2013,11,2013-02-01,,resa,1,Oxford
@@ -714,7 +714,7 @@ sasong,sasong_ar,avsnitt,datum,matchtyp,typ,ordning,resmal
 26,2015–2016,1,2015-11-20,Gruppspel,resa,3,Köpenhamn
 26,2015–2016,2,2015-11-27,Gruppspel,resa,1,Paris
 26,2015–2016,2,2015-11-27,Gruppspel,resa,2,Luleå
-26,2015–2016,2,2015-11-27,Gruppspel,resa,3,Hongkong
+26,2015–2016,2,2015-11-27,Gruppspel,resa,3,Hong Kong
 26,2015–2016,3,2015-12-04,Gruppspel,resa,1,Ankara
 26,2015–2016,3,2015-12-04,Gruppspel,resa,2,Varberg
 26,2015–2016,3,2015-12-04,Gruppspel,resa,3,Saint Louis
@@ -750,7 +750,7 @@ sasong,sasong_ar,avsnitt,datum,matchtyp,typ,ordning,resmal
 26,2015–2016,13,2016-02-12,Final,resa,3,Nassau
 27,2016–2017,1,2016-12-02,Gruppspel,resa,1,Monaco
 27,2016–2017,1,2016-12-02,Gruppspel,resa,2,Strängnäs
-27,2016–2017,1,2016-12-02,Gruppspel,resa,3,Montréal
+27,2016–2017,1,2016-12-02,Gruppspel,resa,3,Montreal
 27,2016–2017,2,2016-12-09,Gruppspel,resa,1,Oslo
 27,2016–2017,2,2016-12-09,Gruppspel,resa,2,Arvika
 27,2016–2017,2,2016-12-09,Gruppspel,resa,3,Tunis
@@ -831,7 +831,7 @@ sasong,sasong_ar,avsnitt,datum,matchtyp,typ,ordning,resmal
 28,2017–2018,13,2018-03-02,Final,resa,2,Karlshamn
 28,2017–2018,13,2018-03-02,Final,resa,3,Istanbul
 29,2018–2019,1,2018-11-30,Gruppspel,resa,1,Falkenberg
-29,2018–2019,1,2018-11-30,Gruppspel,resa,2,Kraków
+29,2018–2019,1,2018-11-30,Gruppspel,resa,2,Krakow
 29,2018–2019,1,2018-11-30,Gruppspel,resa,3,New York
 29,2018–2019,2,2018-12-07,Gruppspel,resa,1,Leipzig
 29,2018–2019,2,2018-12-07,Gruppspel,resa,2,Nora
@@ -1074,7 +1074,7 @@ sasong,sasong_ar,avsnitt,datum,matchtyp,typ,ordning,resmal
 34,2023–2024,5,2023-12-01,Gruppspel,resa,2,Tromsö
 34,2023–2024,5,2023-12-01,Gruppspel,resa,3,Phuket
 34,2023–2024,5,2023-12-01,Gruppspel,narmast_vinner,1,Stonehenge
-34,2023–2024,6,2023-12-08,Gruppspel,resa,1,Hongkong
+34,2023–2024,6,2023-12-08,Gruppspel,resa,1,Hong Kong
 34,2023–2024,6,2023-12-08,Gruppspel,resa,2,Funchal
 34,2023–2024,6,2023-12-08,Gruppspel,resa,3,Lysekil
 34,2023–2024,6,2023-12-08,Gruppspel,narmast_vinner,1,Dalhalla
@@ -1096,7 +1096,7 @@ sasong,sasong_ar,avsnitt,datum,matchtyp,typ,ordning,resmal
 34,2023–2024,10,2024-01-05,Andra chansen,narmast_vinner,1,Moskva
 34,2023–2024,11,2024-01-12,Semifinal,resa,1,La Paz
 34,2023–2024,11,2024-01-12,Semifinal,resa,2,Varberg
-34,2023–2024,11,2024-01-12,Semifinal,resa,3,Málaga
+34,2023–2024,11,2024-01-12,Semifinal,resa,3,Malaga
 34,2023–2024,11,2024-01-12,Semifinal,narmast_vinner,1,Buenos Aires
 34,2023–2024,12,2024-01-19,Semifinal,resa,1,Köln
 34,2023–2024,12,2024-01-19,Semifinal,resa,2,Torsby
@@ -1177,7 +1177,7 @@ sasong,sasong_ar,avsnitt,datum,matchtyp,typ,ordning,resmal
 36,2025–2026,2,2025-10-31,Gruppspel,resa,2,Eslöv
 36,2025–2026,2,2025-10-31,Gruppspel,resa,3,Sydney
 36,2025–2026,2,2025-10-31,Gruppspel,narmast_vinner,1,Venedig
-36,2025–2026,2,2025-10-31,Gruppspel,narmast_vinner,2,"Washington, D.C."
+36,2025–2026,2,2025-10-31,Gruppspel,narmast_vinner,2,Washington
 36,2025–2026,2,2025-10-31,Gruppspel,narmast_vinner,3,Mecka
 36,2025–2026,3,2025-11-07,Gruppspel,resa,1,Helsingborg
 36,2025–2026,3,2025-11-07,Gruppspel,resa,2,Bergen
@@ -1280,7 +1280,7 @@ sasong,sasong_ar,avsnitt,datum,matchtyp,typ,ordning,resmal
 37,2026,2,2026-09-25,Gruppspel,resa,2,Porto
 37,2026,2,2026-09-25,Gruppspel,resa,3,Amman
 37,2026,2,2026-09-25,Gruppspel,narmast_vinner,1,Peking
-37,2026,2,2026-09-25,Gruppspel,narmast_vinner,2,New Delhi
+37,2026,2,2026-09-25,Gruppspel,narmast_vinner,2,Delhi
 37,2026,2,2026-09-25,Gruppspel,narmast_vinner,3,Pyonyang
 37,2026,2,2026-09-25,Gruppspel,narmast_vinner,4,Kiev
 37,2026,2,2026-09-25,Gruppspel,narmast_vinner,5,Ankara
