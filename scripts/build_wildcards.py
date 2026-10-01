@@ -126,6 +126,45 @@ def classify(country_code, continents) -> str:
     return "europe" if continents.get(country_code) == "EU" else "outside_europe"
 
 
+def load_raw_candidates(continents, exclude_names):
+    """All capitals/population>=1,000,000 places (name, country_code, population,
+    region), after exonym-mapping and stripping permanent artifacts (EXCLUDE_NAMES
+    and country-as-destination capitals) - but WITHOUT filtering out places the
+    show already knows. Used both to build the current wildcards pool (main())
+    and to backtest the fame signal against the show's actual history of first
+    appearances (backtest_wildcards.py).
+    """
+    print("Downloading GeoNames cities15000 dump...")
+    req = urllib.request.Request(CITIES_ZIP_URL, headers={"User-Agent": USER_AGENT})
+    with urllib.request.urlopen(req) as resp:
+        zip_bytes = resp.read()
+    with zipfile.ZipFile(io.BytesIO(zip_bytes)) as zf:
+        text = zf.read("cities15000.txt").decode("utf-8")
+
+    candidates = {}  # name -> (country_code, population)
+    for line in text.splitlines():
+        fields = line.split("\t")
+        name = EXONYM_MAP.get(fields[1], fields[1])
+        country_code = fields[8].strip().lower()
+        feature_code = fields[7]
+        population = int(fields[14] or 0)
+        if country_code == "se" or name in exclude_names:
+            continue
+        if not (feature_code == "PPLC" or population >= POPULATION_THRESHOLD):
+            continue
+        # keep the highest-population entry if the same name appears twice
+        if name not in candidates or population > candidates[name][1]:
+            candidates[name] = (country_code, population)
+
+    rows = []
+    for name, (country_code, population) in candidates.items():
+        region = classify(country_code, continents)
+        if region == "sweden":
+            continue
+        rows.append({"resmal": name, "country_code": country_code, "region": region, "population": population})
+    return rows
+
+
 def main():
     continents = load_country_continents()
     country_capitals = load_country_capitals()
@@ -143,36 +182,10 @@ def main():
         if capital:
             exclude_names.add(capital)
 
-    print("Downloading GeoNames cities15000 dump...")
-    req = urllib.request.Request(CITIES_ZIP_URL, headers={"User-Agent": USER_AGENT})
-    with urllib.request.urlopen(req) as resp:
-        zip_bytes = resp.read()
-    with zipfile.ZipFile(io.BytesIO(zip_bytes)) as zf:
-        text = zf.read("cities15000.txt").decode("utf-8")
-
-    candidates = {}  # name -> (country_code, population)
-    for line in text.splitlines():
-        fields = line.split("\t")
-        name = EXONYM_MAP.get(fields[1], fields[1])
-        country_code = fields[8].strip().lower()
-        feature_code = fields[7]
-        population = int(fields[14] or 0)
-        if country_code == "se" or name in known_places or name in exclude_names:
-            continue
-        if normalize(name) in known_normalized:
-            continue
-        if not (feature_code == "PPLC" or population >= POPULATION_THRESHOLD):
-            continue
-        # keep the highest-population entry if the same name appears twice
-        if name not in candidates or population > candidates[name][1]:
-            candidates[name] = (country_code, population)
-
-    rows = []
-    for name, (country_code, population) in candidates.items():
-        region = classify(country_code, continents)
-        if region == "sweden":
-            continue
-        rows.append({"resmal": name, "country_code": country_code, "region": region, "population": population})
+    rows = [
+        r for r in load_raw_candidates(continents, exclude_names)
+        if r["resmal"] not in known_places and normalize(r["resmal"]) not in known_normalized
+    ]
 
     print(f"{len(rows)} wildcard candidates (capitals / population >= {POPULATION_THRESHOLD:,}), fetching fame...")
     fame = ensure_fame([r["resmal"] for r in rows], load_cache())
