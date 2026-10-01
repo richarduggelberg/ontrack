@@ -8,7 +8,6 @@ Astana,kz,outside_europe,1544142,13210
 Kazan,ru,europe,1243500,12991
 Hiroshima,jp,outside_europe,1200754,11528
 Chongqing,cn,outside_europe,22000000,10921
-New Delhi,in,outside_europe,317797,10203
 Erbil,iq,outside_europe,1612700,9915
 Asmara,er,outside_europe,563930,9890
 Pristina,xk,europe,550000,9826
@@ -111,7 +110,6 @@ Fort Worth,us,outside_europe,1008106,2149
 Apia,ws,outside_europe,40407,2131
 Amritsar,in,outside_europe,1159227,2122
 Monterrey,mx,outside_europe,1135512,2037
-Saint Petersburg,ru,europe,5351935,1985
 Pune,in,outside_europe,3124458,1960
 Huế,vn,outside_europe,1380000,1915
 Alofi,nu,outside_europe,624,1886
@@ -309,7 +307,6 @@ Xuzhou,cn,outside_europe,1253991,227
 Mbuji-Mayi,cd,outside_europe,2101332,226
 İzmir,tr,outside_europe,2938292,223
 Xining,cn,outside_europe,2467965,221
-Wuchang,cn,outside_europe,1102188,219
 Datong,cn,outside_europe,3105591,215
 Kunshan,cn,outside_europe,2092496,213
 Aurangabad,in,outside_europe,1175116,206
@@ -317,7 +314,6 @@ Navi Mumbai,in,outside_europe,2600000,206
 Palembang,id,outside_europe,1801367,205
 Changwon,kr,outside_europe,1025702,204
 Kaduna,ng,outside_europe,1850000,193
-Muscat,om,outside_europe,797000,192
 Sokoto,ng,outside_europe,1040000,188
 Shaoxing,cn,outside_europe,2300000,187
 Yichang,cn,outside_europe,1350150,186
@@ -345,7 +341,6 @@ Touba,sn,outside_europe,1120824,141
 Mata-Utu,wf,outside_europe,1200,141
 Xinyang,cn,outside_europe,1416800,140
 Onitsha,ng,outside_europe,1553000,140
-Kathmandu,np,outside_europe,1442271,135
 Kuwait City,kw,outside_europe,60064,130
 Weifang,cn,outside_europe,9386705,127
 Longyan,cn,outside_europe,1025087,125
@@ -414,7 +409,6 @@ Jiangyin,cn,outside_europe,1779515,69
 Baoji,cn,outside_europe,1437802,69
 Yangjiang,cn,outside_europe,1292987,68
 Bozhou,cn,outside_europe,1409436,68
-Luxembourg,lu,europe,76684,66
 Saint-Pierre,pm,outside_europe,6200,66
 Fushun,cn,outside_europe,1400646,65
 Pimpri-Chinchwad,in,outside_europe,1727692,63

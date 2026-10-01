@@ -67,6 +67,10 @@ EXONYM_MAP = {
     "Havana": "Havanna",
     "Kyiv": "Kiev",
     "Odesa": "Odessa",
+    "Saint Petersburg": "Sankt Petersburg",
+    "Muscat": "Muskat",
+    "Kathmandu": "Katmandu",
+    "Luxembourg": "Luxemburg",
     # Faroese spelling vs. the Swedish exonym the show/known-places list uses.
     "Tórshavn": "Torshamn",
 }
@@ -80,6 +84,9 @@ EXCLUDE_NAMES = {
     "Pest", "Manhattan", "Brooklyn", "Queens", "The Bronx", "New York City",
     "Kowloon", "New Territories", "Hong Kong Island",
     "Longyearbyen",
+    # New Delhi is a separate municipality inside the already-known "Delhi";
+    # Wuchang was a separate city that merged into the already-known "Wuhan".
+    "New Delhi", "Wuchang",
 }
 
 
