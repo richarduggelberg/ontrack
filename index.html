@@ -125,6 +125,14 @@
   <script>
     const REGION_ORDER = ["sweden", "europe", "outside_europe"];
 
+    function countryFlagEmoji(code) {
+      // Regional indicator symbols; some OS emoji fonts (e.g. Windows) don't
+      // have flag glyphs and will show the two letters/boxes instead.
+      if (!code || code.length !== 2) return "";
+      const points = [...code.toUpperCase()].map((c) => 0x1f1e6 + c.charCodeAt(0) - 65);
+      return String.fromCodePoint(...points);
+    }
+
     async function loadPredictions() {
       const columnsEl = document.getElementById("columns");
       const footerEl = document.getElementById("footer");
@@ -168,7 +176,7 @@
               li.innerHTML = `
                 <span class="rank">★</span>
                 <span class="place">${p.place}</span>
-                <span class="pct">${p.country_code.toUpperCase()}</span>
+                <span class="pct">${countryFlagEmoji(p.country_code)} ${p.country_code.toUpperCase()}</span>
               `;
               wcOl.appendChild(li);
             });
