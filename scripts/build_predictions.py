@@ -7,11 +7,18 @@ outside-Europe place, which is why predictions are split into exactly
 these 3 regional slots rather than one combined ranked list.
 
 Scoring (simple, explainable):
-  weight = historical_count * recency_factor
+  weight = historical_count**COUNT_WEIGHT * recency_factor**RECENCY_WEIGHT
+            * fame_multiplier**FAME_WEIGHT
   recency_factor = min(1.0, episodes_since_last_seen / COOLDOWN_EPISODES)
 So a place that appeared recently is strongly suppressed; it recovers back
 to full weight once ~COOLDOWN_EPISODES have passed without it reappearing.
 Within each region, weights are normalised to percentages.
+
+COUNT_WEIGHT / RECENCY_WEIGHT / FAME_WEIGHT are exponents (default 1.0,
+i.e. today's formula unchanged) that control how much each factor is
+allowed to swing the ranking - e.g. COUNT_WEIGHT < 1 compresses count's
+naturally unbounded influence, closer to the sqrt/log variants tested in
+backtest_predictions.py.
 
 COOLDOWN_EPISODES=100 was chosen by walk-forward backtesting (see
 scripts/backtest_predictions.py) over seasons 33-37: it roughly halves
@@ -23,10 +30,13 @@ no history-based model can anticipate.
 
 Fame boost: for Europe/outside-Europe (not Sweden - per manual review
 that slot can be any town at all), weight is additionally multiplied by
-1 + log1p(sv.wikipedia pageviews) / log1p(max pageviews in the dataset),
-so a place known to Swedes (see fetch_fame.py) ranks a bit higher than an
-equally-frequent but obscure one. This only re-ranks places with existing
-show history though; it still can't predict true first-time destinations.
+1 + log1p(sv.wikipedia pageviews) / log1p(max pageviews among that
+region's own candidates) - normalised per region, since Europe and
+outside-Europe don't need to sit on a comparable fame scale - so a place
+known to Swedes (see fetch_fame.py) ranks a bit higher than an
+equally-frequent but obscure one in the same region. This only re-ranks
+places with existing show history though; it still can't predict true
+first-time destinations.
 
 Wildcards: data/wildcards.csv (built by build_wildcards.py) lists world
 capitals / population >= 1M cities that have NEVER appeared on the show,
@@ -57,6 +67,9 @@ WILDCARDS_CSV = ROOT / "data" / "wildcards.csv"
 OUT_PATH = ROOT / "data" / "predictions.json"
 
 COOLDOWN_EPISODES = 100
+COUNT_WEIGHT = 1.0
+RECENCY_WEIGHT = 1.0
+FAME_WEIGHT = 1.0
 TOP_N = 15
 WILDCARD_N = 10
 # Sweden can be literally any town (per manual review), so fame isn't a
@@ -75,12 +88,6 @@ def main():
         region_by_place = {row["resmal"]: row["region"] for row in csv.DictReader(f)}
 
     fame = json.loads(FAME_CACHE.read_text(encoding="utf-8")) if FAME_CACHE.exists() else {}
-    max_fame = max(fame.values()) if fame else 1
-
-    def fame_multiplier(place, region):
-        if region not in FAME_REGIONS:
-            return 1.0
-        return 1.0 + math.log1p(fame.get(place, 0)) / math.log1p(max_fame)
 
     with RESMAL_CSV.open(encoding="utf-8") as f:
         all_rows = list(csv.DictReader(f))
@@ -113,6 +120,20 @@ def main():
         place = r["resmal"]
         last_seen[place] = max(last_seen.get(place, -1), idx)
 
+    # Fame is normalised within each region's own candidate set, not globally -
+    # Sweden/Europe/outside-Europe don't need to be on a comparable fame scale.
+    max_fame_by_region = defaultdict(int)
+    for place, c in count.items():
+        region = region_by_place.get(place, "unknown")
+        if region in FAME_REGIONS:
+            max_fame_by_region[region] = max(max_fame_by_region[region], fame.get(place, 0))
+
+    def fame_multiplier(place, region):
+        max_fame = max_fame_by_region.get(region, 0)
+        if region not in FAME_REGIONS or max_fame <= 0:
+            return 1.0
+        return 1.0 + math.log1p(fame.get(place, 0)) / math.log1p(max_fame)
+
     by_region = defaultdict(list)
     for place, c in count.items():
         region = region_by_place.get(place, "unknown")
@@ -120,7 +141,11 @@ def main():
             continue
         episodes_since = total_episodes - 1 - last_seen[place]
         recency_factor = min(1.0, episodes_since / COOLDOWN_EPISODES)
-        weight = c * recency_factor * fame_multiplier(place, region)
+        weight = (
+            c ** COUNT_WEIGHT
+            * recency_factor ** RECENCY_WEIGHT
+            * fame_multiplier(place, region) ** FAME_WEIGHT
+        )
         by_region[region].append({
             "place": place,
             "count": c,

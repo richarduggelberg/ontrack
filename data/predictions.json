@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-01T12:08:55+00:00",
+  "generated_at": "2026-10-01T19:12:54+00:00",
   "episode_count": 382,
   "cooldown_episodes": 100,
   "regions": {
@@ -280,7 +280,7 @@
           "place": "Kuala Lumpur",
           "count": 3,
           "episodes_since_last_seen": 127,
-          "percentage": 2.1
+          "percentage": 2.2
         },
         {
           "place": "Santiago de Chile",
@@ -340,7 +340,7 @@
           "place": "Beirut",
           "count": 2,
           "episodes_since_last_seen": 164,
-          "percentage": 1.4
+          "percentage": 1.5
         },
         {
           "place": "Damaskus",
