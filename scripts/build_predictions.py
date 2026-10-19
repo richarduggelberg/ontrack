@@ -50,10 +50,13 @@ episodes' Sweden picks are in fact spaced further apart than random
 chance (median ~339km vs. ~308km for random pairs; only 0.8% of
 consecutive pairs are under 50km vs. 2.3% for random pairs), confirming
 the show avoids picking two nearby Swedish towns back-to-back. So a
-Sweden candidate close to the *immediately preceding* episode's Sweden
-destination gets its weight multiplied down towards PROXIMITY_MIN_MULT
+Sweden candidate close to one of the last PROXIMITY_LOOKBACK Sweden
+destinations gets its weight multiplied down towards PROXIMITY_MIN_MULT
 (at distance 0) scaling linearly back up to 1.0 at that candidate's
-"too close" radius or further.
+"too close" radius or further. Older picks within that lookback window
+count for less: each one further back is faded towards no-penalty by
+PROXIMITY_DECAY per step (see scripts/backtest_proximity.py for the
+walk-forward validation behind these constants).
 
 That radius isn't a flat km value - southern Sweden has far more towns
 packed closer together than the sparse north (verified: median distance
@@ -113,6 +116,7 @@ PROXIMITY_RADIUS_MAX_KM = 400
 PROXIMITY_MIN_MULT = 0.15
 PROXIMITY_WEIGHT = 1.0
 PROXIMITY_LOOKBACK = 1
+PROXIMITY_DECAY = 0.5
 
 REGION_LABELS = {
     "sweden": "Sverige",
@@ -225,7 +229,8 @@ def main():
             return 1.0
         radius = radius_by_place[place]
         best = 1.0
-        for recent in recent_sweden_places:
+        # recent_sweden_places is chronological (oldest first); lag 1 = most recent.
+        for lag, recent in enumerate(reversed(recent_sweden_places), start=1):
             if recent == place:
                 continue
             recent_coord = sweden_coords.get(recent)
@@ -233,10 +238,12 @@ def main():
                 continue
             dist = haversine_km(place_coord, recent_coord)
             if dist >= radius:
-                mult = 1.0
+                raw_mult = 1.0
             else:
-                mult = PROXIMITY_MIN_MULT + (1 - PROXIMITY_MIN_MULT) * (dist / radius)
-            best = min(best, mult)
+                raw_mult = PROXIMITY_MIN_MULT + (1 - PROXIMITY_MIN_MULT) * (dist / radius)
+            decay = PROXIMITY_DECAY ** (lag - 1)
+            effective_mult = 1.0 - (1.0 - raw_mult) * decay
+            best = min(best, effective_mult)
         return best
 
     by_region = defaultdict(list)
