@@ -1,20 +1,31 @@
-TODO: extend proximity penalty to Europe / outside_europe
+DONE: proximity penalty extended to Europe / outside_europe
 
-Currently (scripts/build_predictions.py) the proximity penalty only
-applies to the sweden region - candidates there are ~174 towns within
-one country, with coordinates cached in data/sweden_coords_cache.json.
+scripts/fetch_world_coords.py geocodes all Europe/outside_europe
+destinations (country-code-disambiguated via Nominatim), cached in
+data/world_coords_cache.json (343/355 resolved; 12 landmark-like
+entries - e.g. Louvren i Paris, Marianergraven - have no real "lat/lon
+city" and are left unresolved/no-penalty).
 
-Europe and outside_europe candidates are whole countries/cities
-worldwide (resmal_regions.csv / geo_cache.json only store a country
-code per place, no coordinates), so applying the same logic needs:
-- a coords cache for those places too (geocode via Nominatim like
-  fetch_sweden_coords.py, but without the countrycodes=se restriction)
-- deciding the right scale: country-to-country distances are huge and
-  uneven (e.g. neighbouring small European countries vs. one giant
-  candidate like Russia/Brazil/Australia), so the same local-density-
-  scaled-radius idea from Sweden should still apply, but needs its own
-  calibration per region (don't assume Sweden's constants transfer)
-- checking the historical pattern actually holds there before adding
-  the penalty, same as was done for Sweden (compare consecutive-episode
-  distances vs. random pairs) - no validation has been done for
-  Europe/outside_europe yet, so this shouldn't be assumed true
+build_predictions.py's proximity logic (local-density-scaled radius,
+lookback+decay, weight exponent) is now region-generic (PROXIMITY_REGIONS
+= sweden/europe/outside_europe) with per-region radius min/max clamps
+(europe: 150-1200km, outside_europe: 300-3000km) since the scale of
+"too close" is very different across regions.
+
+Historical-pattern validation (consecutive-episode distance vs. random
+pairs, same check used for Sweden) was weaker here than for Sweden:
+- europe: a real but modest avoidance signal (13.7% of consecutive
+  picks fall under their own density-scaled radius vs. 15.5% for random
+  pairs) - same direction as Sweden, much smaller effect size.
+- outside_europe: no avoidance pattern found - consecutive picks are
+  if anything slightly *more* likely to be close than random pairs
+  (likely because episodes are sometimes thematically grouped by
+  continent/region rather than avoiding repeats). Backtesting
+  (scripts/backtest_proximity.py --region outside_europe) across 3
+  disjoint windows showed no consistent improvement either.
+
+Decision (explicit user call despite the weak/absent evidence): enabled
+for both regions anyway, using the same defaults as Sweden (lookback=1,
+weight=1.0, decay=0.5) rather than overfitting to noisy per-region
+backtest numbers.
+

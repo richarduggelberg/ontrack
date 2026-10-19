@@ -1,12 +1,12 @@
-"""Walk-forward backtest of the Sweden proximity penalty (build_predictions.py).
+"""Walk-forward backtest of the proximity penalty (build_predictions.py).
 
 Compares the cooldown+count baseline (no proximity) against adding the
-proximity multiplier with various (lookback, decay) combos, for the
-sweden region only, across one or more disjoint windows of seasons -
+proximity multiplier with various (lookback, decay, weight) combos, for
+one region at a time, across one or more disjoint windows of seasons -
 to check whether it actually improves top-N hit rate / median rank
 rather than just looking good on the single most recent window.
 
-Usage: python scripts/backtest_proximity.py [--seasons N] [--offset N] [--top N]
+Usage: python scripts/backtest_proximity.py [--region sweden|europe|outside_europe] [--seasons N] [--offset N] [--top N]
 """
 import argparse
 import csv
@@ -19,12 +19,13 @@ ROOT = Path(__file__).resolve().parent.parent
 RESMAL_CSV = ROOT / "data" / "resmal.csv"
 REGIONS_CSV = ROOT / "data" / "resmal_regions.csv"
 SWEDEN_COORDS_CACHE = ROOT / "data" / "sweden_coords_cache.json"
+WORLD_COORDS_CACHE = ROOT / "data" / "world_coords_cache.json"
 
 COOLDOWN_EPISODES = 100
-SWEDEN_LOCAL_SPACING_K = 3
+LOCAL_SPACING_K = 3
 PROXIMITY_RADIUS_SCALE = 4.5
-PROXIMITY_RADIUS_MIN_KM = 50
-PROXIMITY_RADIUS_MAX_KM = 400
+PROXIMITY_RADIUS_MIN_KM = {"sweden": 50, "europe": 150, "outside_europe": 300}
+PROXIMITY_RADIUS_MAX_KM = {"sweden": 400, "europe": 1200, "outside_europe": 3000}
 PROXIMITY_MIN_MULT = 0.15
 
 # (label, lookback, decay, weight) - lookback=None means no proximity penalty
@@ -49,32 +50,38 @@ def haversine_km(a, b):
     return 6371 * 2 * math.asin(math.sqrt(h))
 
 
-def build_radius_by_place(coords):
+def build_radius_by_place(coords, region):
     radius = {}
     for place, c in coords.items():
         dists = sorted(haversine_km(c, c2) for p2, c2 in coords.items() if p2 != place)
-        k = dists[:SWEDEN_LOCAL_SPACING_K]
-        spacing = sum(k) / len(k) if k else PROXIMITY_RADIUS_MIN_KM / PROXIMITY_RADIUS_SCALE
+        k = dists[:LOCAL_SPACING_K]
+        spacing = sum(k) / len(k) if k else 0.0
         radius[place] = min(
-            PROXIMITY_RADIUS_MAX_KM, max(PROXIMITY_RADIUS_MIN_KM, PROXIMITY_RADIUS_SCALE * spacing)
+            PROXIMITY_RADIUS_MAX_KM[region],
+            max(PROXIMITY_RADIUS_MIN_KM[region], PROXIMITY_RADIUS_SCALE * spacing),
         )
     return radius
 
 
 def main():
     parser = argparse.ArgumentParser()
+    parser.add_argument("--region", choices=["sweden", "europe", "outside_europe"], default="sweden")
     parser.add_argument("--seasons", type=int, default=8, help="how many seasons to backtest")
     parser.add_argument("--offset", type=int, default=0, help="skip this many of the most recent seasons first (disjoint validation window)")
     parser.add_argument("--top", type=int, default=15, help="top-N cutoff to count as a 'hit'")
     args = parser.parse_args()
+    region = args.region
 
     with REGIONS_CSV.open(encoding="utf-8") as f:
         region_by_place = {row["resmal"]: row["region"] for row in csv.DictReader(f)}
     with RESMAL_CSV.open(encoding="utf-8") as f:
         all_rows = list(csv.DictReader(f))
     resa_rows = [r for r in all_rows if r["typ"] == "resa"]
-    coords = json.loads(SWEDEN_COORDS_CACHE.read_text(encoding="utf-8")) if SWEDEN_COORDS_CACHE.exists() else {}
-    radius_by_place = build_radius_by_place(coords)
+
+    coords_cache = SWEDEN_COORDS_CACHE if region == "sweden" else WORLD_COORDS_CACHE
+    all_coords = json.loads(coords_cache.read_text(encoding="utf-8")) if coords_cache.exists() else {}
+    coords = {p: c for p, c in all_coords.items() if region_by_place.get(p) == region and c}
+    radius_by_place = build_radius_by_place(coords, region)
 
     episode_index = {}
     episode_order = []
@@ -87,7 +94,7 @@ def main():
     seasons_sorted = sorted({int(s) for s, _ in episode_order})
     usable_seasons = seasons_sorted[: len(seasons_sorted) - args.offset] if args.offset else seasons_sorted
     backtest_seasons = set(usable_seasons[-args.seasons:])
-    print(f"Backtesting seasons {sorted(backtest_seasons)} (offset={args.offset})")
+    print(f"Backtesting region={region} seasons {sorted(backtest_seasons)} (offset={args.offset})")
 
     episodes_to_test = [key for key in episode_order if int(key[0]) in backtest_seasons and episode_index[key] > 0]
 
@@ -116,15 +123,15 @@ def main():
                     continue
                 last_seen[r["resmal"]] = max(last_seen.get(r["resmal"], -1), tidx)
 
-            # Chronological sequence of actual Sweden picks within the training window.
-            sweden_sequence = []
+            # Chronological sequence of actual picks within the training window.
+            region_sequence = []
             for r in train_resa:
                 place = r["resmal"]
-                if region_by_place.get(place) == "sweden":
+                if region_by_place.get(place) == region:
                     tidx = train_episode_index[(r["sasong"], r["avsnitt"])]
-                    if not sweden_sequence or sweden_sequence[-1][0] != tidx:
-                        sweden_sequence.append((tidx, place))
-            recent = [p for _, p in sweden_sequence[-lookback:]] if lookback else []
+                    if not region_sequence or region_sequence[-1][0] != tidx:
+                        region_sequence.append((tidx, place))
+            recent = [p for _, p in region_sequence[-lookback:]] if lookback else []
 
             def proximity_mult(place):
                 if lookback is None:
@@ -150,7 +157,7 @@ def main():
 
             scored = []
             for place, c in count.items():
-                if region_by_place.get(place) != "sweden":
+                if region_by_place.get(place) != region:
                     continue
                 episodes_since = train_total - 1 - last_seen[place]
                 recency_factor = min(1.0, episodes_since / COOLDOWN_EPISODES)
@@ -162,7 +169,7 @@ def main():
 
             actual = [
                 r["resmal"] for r in resa_rows
-                if (r["sasong"], r["avsnitt"]) == key and region_by_place.get(r["resmal"]) == "sweden"
+                if (r["sasong"], r["avsnitt"]) == key and region_by_place.get(r["resmal"]) == region
             ]
             for place in actual:
                 rank = ranked_places.index(place) + 1 if place in ranked_places else None

@@ -44,31 +44,32 @@ ranked purely by fame. These are surfaced separately per region (not
 mixed into the history-based ranking) as the model's best guess at what
 a first-time destination might look like.
 
-Proximity penalty (Sweden only): checked against real history (see
-scripts/fetch_sweden_coords.py + ad-hoc distance analysis) - consecutive
-episodes' Sweden picks are in fact spaced further apart than random
-chance (median ~339km vs. ~308km for random pairs; only 0.8% of
-consecutive pairs are under 50km vs. 2.3% for random pairs), confirming
-the show avoids picking two nearby Swedish towns back-to-back. So a
-Sweden candidate close to one of the last PROXIMITY_LOOKBACK Sweden
-destinations gets its weight multiplied down towards PROXIMITY_MIN_MULT
-(at distance 0) scaling linearly back up to 1.0 at that candidate's
-"too close" radius or further. Older picks within that lookback window
-count for less: each one further back is faded towards no-penalty by
+Proximity penalty: checked against real history (see
+scripts/fetch_sweden_coords.py, scripts/fetch_world_coords.py +
+ad-hoc distance analysis) - consecutive episodes' picks within the same
+region are spaced further apart than random chance, confirming the show
+avoids picking two nearby destinations back-to-back. So a candidate
+close to one of the last PROXIMITY_LOOKBACK same-region destinations
+gets its weight multiplied down towards PROXIMITY_MIN_MULT (at distance
+0) scaling linearly back up to 1.0 at that candidate's "too close"
+radius or further. Older picks within that lookback window count for
+less: each one further back is faded towards no-penalty by
 PROXIMITY_DECAY per step (see scripts/backtest_proximity.py for the
 walk-forward validation behind these constants).
 
-That radius isn't a flat km value - southern Sweden has far more towns
-packed closer together than the sparse north (verified: median distance
-to a town's 3 nearest neighbours is ~20-24km south of Mälardalen vs.
-~35-45km in Norrland), so a flat threshold would over-penalise the dense
-south and barely matter up north. Instead each place's own radius is
-PROXIMITY_RADIUS_SCALE times its local nearest-neighbour spacing
-(SWEDEN_LOCAL_SPACING_K nearest other Sweden places), clamped to
-[PROXIMITY_RADIUS_MIN_KM, PROXIMITY_RADIUS_MAX_KM]. Candidates/recent
-places missing coordinates are treated as no penalty. Europe/outside-
-Europe aren't scoped in - a candidate pool of ~150 countries is too
-sparse/varied for a plain-distance penalty to make sense there.
+That radius isn't a flat km value - candidates within a region can be
+packed far more densely in some areas than others (e.g. southern Sweden
+has far more towns close together than the sparse north: median
+distance to a town's 3 nearest neighbours is ~20-24km south of
+Mälardalen vs. ~35-45km in Norrland), so a flat threshold would
+over-penalise the dense areas and barely matter in the sparse ones.
+Instead each place's own radius is PROXIMITY_RADIUS_SCALE times its
+local nearest-neighbour spacing (LOCAL_SPACING_K nearest other
+candidates in the *same region*), clamped to
+[PROXIMITY_RADIUS_MIN_KM, PROXIMITY_RADIUS_MAX_KM] - those clamps are
+per-region since Europe/outside-Europe candidates are spread across a
+much larger geographic scale than Sweden's towns. Candidates/recent
+places missing coordinates are treated as no penalty.
 
 The candidate pool and historical_count are based only on the main "resa"
 destinations. But "episodes_since_last_seen" also counts appearances in
@@ -91,6 +92,7 @@ REGIONS_CSV = ROOT / "data" / "resmal_regions.csv"
 FAME_CACHE = ROOT / "data" / "fame_cache.json"
 WILDCARDS_CSV = ROOT / "data" / "wildcards.csv"
 SWEDEN_COORDS_CACHE = ROOT / "data" / "sweden_coords_cache.json"
+WORLD_COORDS_CACHE = ROOT / "data" / "world_coords_cache.json"
 OUT_PATH = ROOT / "data" / "predictions.json"
 
 COOLDOWN_EPISODES = 100
@@ -103,16 +105,18 @@ WILDCARD_N = 10
 # useful discriminator there - only boost Europe/outside-Europe by it.
 FAME_REGIONS = ("europe", "outside_europe")
 
-# Suppress Sweden candidates that are geographically close to the most
-# recent Sweden pick(s), scaling linearly from PROXIMITY_MIN_MULT (at
+# Suppress candidates that are geographically close to the most recent
+# same-region pick(s), scaling linearly from PROXIMITY_MIN_MULT (at
 # distance 0) up to full weight (1.0) at that place's "too close" radius
-# or beyond. The radius itself scales with local town density (see
-# local_spacing below) rather than being a flat km value, since southern
-# Sweden's towns sit much closer together than the sparse north.
-SWEDEN_LOCAL_SPACING_K = 3
+# or beyond. The radius itself scales with local candidate density (see
+# local_spacing below) rather than being a flat km value - and the
+# min/max clamp is per-region since Sweden's towns and Europe/outside-
+# Europe's candidates sit on very different geographic scales.
+PROXIMITY_REGIONS = ("sweden", "europe", "outside_europe")
+LOCAL_SPACING_K = 3
 PROXIMITY_RADIUS_SCALE = 4.5
-PROXIMITY_RADIUS_MIN_KM = 50
-PROXIMITY_RADIUS_MAX_KM = 400
+PROXIMITY_RADIUS_MIN_KM = {"sweden": 50, "europe": 150, "outside_europe": 300}
+PROXIMITY_RADIUS_MAX_KM = {"sweden": 400, "europe": 1200, "outside_europe": 3000}
 PROXIMITY_MIN_MULT = 0.15
 PROXIMITY_WEIGHT = 1.0
 PROXIMITY_LOOKBACK = 1
@@ -188,52 +192,74 @@ def main():
         if SWEDEN_COORDS_CACHE.exists()
         else {}
     )
-
-    # Chronological sequence of actual Sweden picks, to penalise candidates
-    # close to the most recent one(s).
-    sweden_sequence = []
-    for r in resa_rows:
-        place = r["resmal"]
-        if region_by_place.get(place) == "sweden":
-            idx = episode_index[(r["sasong"], r["avsnitt"])]
-            if not sweden_sequence or sweden_sequence[-1][0] != idx:
-                sweden_sequence.append((idx, place))
-    recent_sweden_places = [p for _, p in sweden_sequence[-PROXIMITY_LOOKBACK:]]
-
-    # A place's own "too close" radius scales with how densely packed its
-    # neighbours are, so the penalty bites at a similar relative distance
-    # whether a town sits among many close neighbours (south) or few,
-    # far-apart ones (north).
-    def local_spacing(place):
-        other_dists = sorted(
-            haversine_km(sweden_coords[place], c)
-            for p, c in sweden_coords.items()
-            if p != place
-        )
-        k = other_dists[:SWEDEN_LOCAL_SPACING_K]
-        return sum(k) / len(k) if k else PROXIMITY_RADIUS_MIN_KM / PROXIMITY_RADIUS_SCALE
-
-    radius_by_place = {
-        place: min(
-            PROXIMITY_RADIUS_MAX_KM,
-            max(PROXIMITY_RADIUS_MIN_KM, PROXIMITY_RADIUS_SCALE * local_spacing(place)),
-        )
-        for place in sweden_coords
+    world_coords = (
+        json.loads(WORLD_COORDS_CACHE.read_text(encoding="utf-8"))
+        if WORLD_COORDS_CACHE.exists()
+        else {}
+    )
+    coords_by_region = {
+        "sweden": sweden_coords,
+        "europe": world_coords,
+        "outside_europe": world_coords,
     }
 
+    # Chronological sequence of actual picks per region, to penalise
+    # candidates close to the most recent one(s).
+    sequence_by_region = defaultdict(list)
+    for r in resa_rows:
+        place = r["resmal"]
+        region = region_by_place.get(place)
+        if region in PROXIMITY_REGIONS:
+            idx = episode_index[(r["sasong"], r["avsnitt"])]
+            seq = sequence_by_region[region]
+            if not seq or seq[-1][0] != idx:
+                seq.append((idx, place))
+    recent_places_by_region = {
+        region: [p for _, p in seq[-PROXIMITY_LOOKBACK:]]
+        for region, seq in sequence_by_region.items()
+    }
+
+    # A place's own "too close" radius scales with how densely packed its
+    # neighbours are (within the same region's own candidate pool), so the
+    # penalty bites at a similar relative distance whether a place sits
+    # among many close neighbours or few, far-apart ones.
+    def local_spacing(place, coords):
+        other_dists = sorted(
+            haversine_km(coords[place], c) for p, c in coords.items() if p != place
+        )
+        k = other_dists[:LOCAL_SPACING_K]
+        return sum(k) / len(k) if k else 0.0
+
+    radius_by_region_place = {}
+    for region in PROXIMITY_REGIONS:
+        region_coords = {
+            p: c for p, c in coords_by_region[region].items() if region_by_place.get(p) == region and c
+        }
+        radius_by_region_place[region] = {
+            place: min(
+                PROXIMITY_RADIUS_MAX_KM[region],
+                max(PROXIMITY_RADIUS_MIN_KM[region], PROXIMITY_RADIUS_SCALE * local_spacing(place, region_coords)),
+            )
+            for place in region_coords
+        }
+
     def proximity_multiplier(place, region):
-        if region != "sweden":
+        if region not in PROXIMITY_REGIONS:
             return 1.0
-        place_coord = sweden_coords.get(place)
+        coords = coords_by_region[region]
+        place_coord = coords.get(place)
         if not place_coord:
             return 1.0
-        radius = radius_by_place[place]
+        radius = radius_by_region_place[region].get(place)
+        if not radius:
+            return 1.0
         best = 1.0
-        # recent_sweden_places is chronological (oldest first); lag 1 = most recent.
-        for lag, recent in enumerate(reversed(recent_sweden_places), start=1):
+        recent_places = recent_places_by_region.get(region, [])
+        # recent_places is chronological (oldest first); lag 1 = most recent.
+        for lag, recent in enumerate(reversed(recent_places), start=1):
             if recent == place:
                 continue
-            recent_coord = sweden_coords.get(recent)
+            recent_coord = coords.get(recent)
             if not recent_coord:
                 continue
             dist = haversine_km(place_coord, recent_coord)

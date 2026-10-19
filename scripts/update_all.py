@@ -15,6 +15,7 @@ STEPS = [
     "classify_destinations.py",
     "fetch_fame.py",
     "fetch_sweden_coords.py",
+    "fetch_world_coords.py",
     "build_predictions.py",
 ]
 
