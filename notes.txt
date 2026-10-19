@@ -1,0 +1,20 @@
+TODO: extend proximity penalty to Europe / outside_europe
+
+Currently (scripts/build_predictions.py) the proximity penalty only
+applies to the sweden region - candidates there are ~174 towns within
+one country, with coordinates cached in data/sweden_coords_cache.json.
+
+Europe and outside_europe candidates are whole countries/cities
+worldwide (resmal_regions.csv / geo_cache.json only store a country
+code per place, no coordinates), so applying the same logic needs:
+- a coords cache for those places too (geocode via Nominatim like
+  fetch_sweden_coords.py, but without the countrycodes=se restriction)
+- deciding the right scale: country-to-country distances are huge and
+  uneven (e.g. neighbouring small European countries vs. one giant
+  candidate like Russia/Brazil/Australia), so the same local-density-
+  scaled-radius idea from Sweden should still apply, but needs its own
+  calibration per region (don't assume Sweden's constants transfer)
+- checking the historical pattern actually holds there before adding
+  the penalty, same as was done for Sweden (compare consecutive-episode
+  distances vs. random pairs) - no validation has been done for
+  Europe/outside_europe yet, so this shouldn't be assumed true
