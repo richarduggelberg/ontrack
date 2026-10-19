@@ -305,7 +305,9 @@ def main():
                 "episodes_since_last_seen": p["episodes_since_last_seen"],
                 "percentage": round(100 * p["weight"] / total_weight, 1),
             })
-        output_regions[region] = {"label": label, "predictions": ranked}
+        latest = [place for _, place in sequence_by_region.get(region, [])][-3:]
+        latest.reverse()  # most recent first
+        output_regions[region] = {"label": label, "predictions": ranked, "latest": latest}
 
     wildcards_by_region = defaultdict(list)
     if WILDCARDS_CSV.exists():

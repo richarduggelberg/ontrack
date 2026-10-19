@@ -45,9 +45,14 @@
     }
     .column h2 {
       font-size: 1.2rem;
-      margin: 0 0 1rem;
+      margin: 0 0 0.35rem;
       padding-bottom: 0.5rem;
       border-bottom: 1px solid #30363d;
+    }
+    .latest {
+      margin: 0 0 1rem;
+      color: #8b949e;
+      font-size: 0.7rem;
     }
     ol {
       list-style: none;
@@ -160,6 +165,13 @@
           const h2 = document.createElement("h2");
           h2.textContent = region.label;
           col.appendChild(h2);
+
+          if (region.latest && region.latest.length) {
+            const latestEl = document.createElement("p");
+            latestEl.className = "latest";
+            latestEl.textContent = `Senaste: ${region.latest.join(" · ")}`;
+            col.appendChild(latestEl);
+          }
 
           const ol = document.createElement("ol");
           region.predictions.forEach((p, i) => {
