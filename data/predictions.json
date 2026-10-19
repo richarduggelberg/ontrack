@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-19T20:19:30+00:00",
+  "generated_at": "2026-10-19T20:23:54+00:00",
   "episode_count": 385,
   "cooldown_episodes": 100,
   "regions": {
@@ -160,7 +160,9 @@
       "latest": [
         "Norrköping",
         "Halmstad",
-        "Växjö"
+        "Växjö",
+        "Östersund",
+        "Skara"
       ]
     },
     "europe": {
@@ -320,7 +322,9 @@
       "latest": [
         "Prag",
         "Monaco",
-        "Warszawa"
+        "Warszawa",
+        "Porto",
+        "Oslo"
       ],
       "wildcards": [
         {
@@ -542,7 +546,9 @@
       "latest": [
         "Kuala Lumpur",
         "Los Angeles",
-        "Buenos Aires"
+        "Buenos Aires",
+        "Amman",
+        "Boston"
       ],
       "wildcards": [
         {
