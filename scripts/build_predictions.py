@@ -44,6 +44,29 @@ ranked purely by fame. These are surfaced separately per region (not
 mixed into the history-based ranking) as the model's best guess at what
 a first-time destination might look like.
 
+Proximity penalty (Sweden only): checked against real history (see
+scripts/fetch_sweden_coords.py + ad-hoc distance analysis) - consecutive
+episodes' Sweden picks are in fact spaced further apart than random
+chance (median ~339km vs. ~308km for random pairs; only 0.8% of
+consecutive pairs are under 50km vs. 2.3% for random pairs), confirming
+the show avoids picking two nearby Swedish towns back-to-back. So a
+Sweden candidate close to the *immediately preceding* episode's Sweden
+destination gets its weight multiplied down towards PROXIMITY_MIN_MULT
+(at distance 0) scaling linearly back up to 1.0 at that candidate's
+"too close" radius or further.
+
+That radius isn't a flat km value - southern Sweden has far more towns
+packed closer together than the sparse north (verified: median distance
+to a town's 3 nearest neighbours is ~20-24km south of Mälardalen vs.
+~35-45km in Norrland), so a flat threshold would over-penalise the dense
+south and barely matter up north. Instead each place's own radius is
+PROXIMITY_RADIUS_SCALE times its local nearest-neighbour spacing
+(SWEDEN_LOCAL_SPACING_K nearest other Sweden places), clamped to
+[PROXIMITY_RADIUS_MIN_KM, PROXIMITY_RADIUS_MAX_KM]. Candidates/recent
+places missing coordinates are treated as no penalty. Europe/outside-
+Europe aren't scoped in - a candidate pool of ~150 countries is too
+sparse/varied for a plain-distance penalty to make sense there.
+
 The candidate pool and historical_count are based only on the main "resa"
 destinations. But "episodes_since_last_seen" also counts appearances in
 the tintin_haddock / narmast_vinner bonus segments: a place flagged there
@@ -64,23 +87,45 @@ RESMAL_CSV = ROOT / "data" / "resmal.csv"
 REGIONS_CSV = ROOT / "data" / "resmal_regions.csv"
 FAME_CACHE = ROOT / "data" / "fame_cache.json"
 WILDCARDS_CSV = ROOT / "data" / "wildcards.csv"
+SWEDEN_COORDS_CACHE = ROOT / "data" / "sweden_coords_cache.json"
 OUT_PATH = ROOT / "data" / "predictions.json"
 
 COOLDOWN_EPISODES = 100
 COUNT_WEIGHT = 1.0
 RECENCY_WEIGHT = 1.0
 FAME_WEIGHT = 1.0
-TOP_N = 15
+TOP_N = 25
 WILDCARD_N = 10
 # Sweden can be literally any town (per manual review), so fame isn't a
 # useful discriminator there - only boost Europe/outside-Europe by it.
 FAME_REGIONS = ("europe", "outside_europe")
+
+# Suppress Sweden candidates that are geographically close to the most
+# recent Sweden pick(s), scaling linearly from PROXIMITY_MIN_MULT (at
+# distance 0) up to full weight (1.0) at that place's "too close" radius
+# or beyond. The radius itself scales with local town density (see
+# local_spacing below) rather than being a flat km value, since southern
+# Sweden's towns sit much closer together than the sparse north.
+SWEDEN_LOCAL_SPACING_K = 3
+PROXIMITY_RADIUS_SCALE = 4.5
+PROXIMITY_RADIUS_MIN_KM = 50
+PROXIMITY_RADIUS_MAX_KM = 400
+PROXIMITY_MIN_MULT = 0.15
+PROXIMITY_WEIGHT = 1.0
+PROXIMITY_LOOKBACK = 1
 
 REGION_LABELS = {
     "sweden": "Sverige",
     "europe": "Europa",
     "outside_europe": "Resten av världen",
 }
+
+
+def haversine_km(a, b):
+    lat1, lon1, lat2, lon2 = map(math.radians, [a["lat"], a["lon"], b["lat"], b["lon"]])
+    dlat, dlon = lat2 - lat1, lon2 - lon1
+    h = math.sin(dlat / 2) ** 2 + math.cos(lat1) * math.cos(lat2) * math.sin(dlon / 2) ** 2
+    return 6371 * 2 * math.asin(math.sqrt(h))
 
 
 def main():
@@ -134,6 +179,66 @@ def main():
             return 1.0
         return 1.0 + math.log1p(fame.get(place, 0)) / math.log1p(max_fame)
 
+    sweden_coords = (
+        json.loads(SWEDEN_COORDS_CACHE.read_text(encoding="utf-8"))
+        if SWEDEN_COORDS_CACHE.exists()
+        else {}
+    )
+
+    # Chronological sequence of actual Sweden picks, to penalise candidates
+    # close to the most recent one(s).
+    sweden_sequence = []
+    for r in resa_rows:
+        place = r["resmal"]
+        if region_by_place.get(place) == "sweden":
+            idx = episode_index[(r["sasong"], r["avsnitt"])]
+            if not sweden_sequence or sweden_sequence[-1][0] != idx:
+                sweden_sequence.append((idx, place))
+    recent_sweden_places = [p for _, p in sweden_sequence[-PROXIMITY_LOOKBACK:]]
+
+    # A place's own "too close" radius scales with how densely packed its
+    # neighbours are, so the penalty bites at a similar relative distance
+    # whether a town sits among many close neighbours (south) or few,
+    # far-apart ones (north).
+    def local_spacing(place):
+        other_dists = sorted(
+            haversine_km(sweden_coords[place], c)
+            for p, c in sweden_coords.items()
+            if p != place
+        )
+        k = other_dists[:SWEDEN_LOCAL_SPACING_K]
+        return sum(k) / len(k) if k else PROXIMITY_RADIUS_MIN_KM / PROXIMITY_RADIUS_SCALE
+
+    radius_by_place = {
+        place: min(
+            PROXIMITY_RADIUS_MAX_KM,
+            max(PROXIMITY_RADIUS_MIN_KM, PROXIMITY_RADIUS_SCALE * local_spacing(place)),
+        )
+        for place in sweden_coords
+    }
+
+    def proximity_multiplier(place, region):
+        if region != "sweden":
+            return 1.0
+        place_coord = sweden_coords.get(place)
+        if not place_coord:
+            return 1.0
+        radius = radius_by_place[place]
+        best = 1.0
+        for recent in recent_sweden_places:
+            if recent == place:
+                continue
+            recent_coord = sweden_coords.get(recent)
+            if not recent_coord:
+                continue
+            dist = haversine_km(place_coord, recent_coord)
+            if dist >= radius:
+                mult = 1.0
+            else:
+                mult = PROXIMITY_MIN_MULT + (1 - PROXIMITY_MIN_MULT) * (dist / radius)
+            best = min(best, mult)
+        return best
+
     by_region = defaultdict(list)
     for place, c in count.items():
         region = region_by_place.get(place, "unknown")
@@ -145,6 +250,7 @@ def main():
             c ** COUNT_WEIGHT
             * recency_factor ** RECENCY_WEIGHT
             * fame_multiplier(place, region) ** FAME_WEIGHT
+            * proximity_multiplier(place, region) ** PROXIMITY_WEIGHT
         )
         by_region[region].append({
             "place": place,
