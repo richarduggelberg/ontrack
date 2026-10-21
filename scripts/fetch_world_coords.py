@@ -1,3 +1,4 @@
+
 """Fetch lat/lon for every Europe / outside-Europe destination (Nominatim),
 cached in data/world_coords_cache.json, so build_predictions.py can penalise
 candidates that sit very close to a destination shown in a recent episode.
@@ -20,6 +21,21 @@ CACHE_PATH = ROOT / "data" / "world_coords_cache.json"
 
 USER_AGENT = "ontrack-resmal-geoclassify/1.0 (one-off research script)"
 NOMINATIM_URL = "https://nominatim.openstreetmap.org/search"
+
+# Places whose names Nominatim can't reliably resolve to the intended spot
+# (translated/landmark names). Pinned so the proximity penalty is anchored
+# correctly and re-runs stay deterministic.
+COORD_OVERRIDES = {
+    "Alexandria": {"lat": 31.199181, "lon": 29.895172},
+    "Heraklion": {"lat": 35.339080, "lon": 25.133284},
+    "Omaha Beach": {"lat": 49.370552, "lon": -0.878939},
+    "Parthenon": {"lat": 37.971503, "lon": 23.726618},
+    "Pyramiderna": {"lat": 29.979165, "lon": 31.134213},
+    "Santiago": {"lat": 42.906458, "lon": -8.519298},
+    "Titanic": {"lat": 54.608143, "lon": -5.909836},
+    "Waterloo": {"lat": 50.703286, "lon": 4.408428},
+    "Panama City": {"lat": 8.971449, "lon": -79.534180},
+}
 
 
 def geocode(place: str, country_code: str):
@@ -47,6 +63,9 @@ def main():
     if CACHE_PATH.exists():
         cache = json.loads(CACHE_PATH.read_text(encoding="utf-8"))
 
+    # Pin coordinates for names Nominatim can't reliably resolve by name.
+    cache.update(COORD_OVERRIDES)
+
     for i, place in enumerate(places, start=1):
         if place in cache:
             continue
@@ -61,18 +80,7 @@ def main():
         CACHE_PATH.write_text(json.dumps(cache, ensure_ascii=False, indent=1), encoding="utf-8")
         time.sleep(1.1)  # respect Nominatim's 1 req/sec usage policy
 
-    unresolved = sorted(p for p, c in cache.items() if c is None)
-    if unresolved:
-        print(f"\n{len(unresolved)} unresolved (manual review needed):")
-        for p in unresolved:
-            print(" ", p)
-    print(f"\nWrote coordinates for {len(places)} places to {CACHE_PATH}")
-
-
-if __name__ == "__main__":
-    main()
-        CACHE_PATH.write_text(json.dumps(cache, ensure_ascii=False, indent=1), encoding="utf-8")
-        time.sleep(1.1)  # respect Nominatim's 1 req/sec usage policy
+    CACHE_PATH.write_text(json.dumps(cache, ensure_ascii=False, indent=1), encoding="utf-8")
 
     unresolved = sorted(p for p, c in cache.items() if c is None)
     if unresolved:
@@ -84,3 +92,16 @@ if __name__ == "__main__":
 
 if __name__ == "__main__":
     main()
+
+
+
+
+
+
+
+
+
+
+
+
+

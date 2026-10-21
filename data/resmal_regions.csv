@@ -6,7 +6,7 @@ Abu Dhabi,ae,outside_europe
 Abuja,ng,outside_europe
 Acapulco,mx,outside_europe
 Addis Abeba,et,outside_europe
-Alexandria,it,outside_europe
+Alexandria,eg,outside_europe
 Alger,dz,outside_europe
 Alingsås,se,sweden
 Alvesta,se,sweden
@@ -155,7 +155,7 @@ Helsingborg,se,sweden
 Helsingfors,fi,europe
 Helsingör,dk,europe
 Helvetesporten,se,sweden
-Heraklion,eg,europe
+Heraklion,gr,europe
 Himmelska fridens torg,cn,outside_europe
 Hjo,se,sweden
 Ho Chi Minh-staden,vn,outside_europe
@@ -329,7 +329,7 @@ Nürnberg,de,europe
 Oakland,us,outside_europe
 Odense,dk,europe
 Odessa,ua,europe
-Omaha Beach,us,europe
+Omaha Beach,fr,europe
 Orlando,us,outside_europe
 Orsa,se,sweden
 Osaka,jp,outside_europe
@@ -342,10 +342,10 @@ Pajala,se,sweden
 Palais des Festivals et des Congrès,fr,europe
 Palermo,it,europe
 Palma,es,europe
-Panama City,us,outside_europe
+Panama City,pa,outside_europe
 Paris,fr,europe
 Parma,it,europe
-Parthenon,us,europe
+Parthenon,gr,europe
 Partille,se,sweden
 Peking,cn,outside_europe
 Pentagon,us,outside_europe
@@ -366,7 +366,7 @@ Preikestolen,no,europe
 Pretoria,za,outside_europe
 Puerto Rico,us,outside_europe
 Pyongyang,kp,outside_europe
-Pyramiderna,se,outside_europe
+Pyramiderna,eg,outside_europe
 Påskön,cl,outside_europe
 Qatar,qa,outside_europe
 Quebec,ca,outside_europe
@@ -394,7 +394,7 @@ San Salvador,sv,outside_europe
 Sandhamn,fi,sweden
 Sandviken,se,sweden
 Sankt Petersburg,ru,europe
-Santiago,cr,europe
+Santiago,es,europe
 Santiago de Chile,cl,outside_europe
 Sarajevo,ba,europe
 Seattle,us,outside_europe
@@ -455,7 +455,7 @@ Thessaloniki,gr,europe
 Tijuana,mx,outside_europe
 Times Square,us,outside_europe
 Tirana,al,europe
-Titanic,cz,europe
+Titanic,gb,europe
 Tokyo,jp,outside_europe
 Tomelilla,se,sweden
 Torekov,se,sweden
@@ -505,7 +505,7 @@ Västerås,se,sweden
 Växjö,se,sweden
 Warszawa,pl,europe
 Washington,us,outside_europe
-Waterloo,us,europe
+Waterloo,be,europe
 Wellington,nz,outside_europe
 Wien,at,europe
 Wimbledon,gb,europe

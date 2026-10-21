@@ -60,6 +60,22 @@ REGION_OVERRIDES = {
     "Ön Iwo Jima i Japan": "outside_europe",  # Iwo Jima, Japan
 }
 
+# Corrected country codes for places Nominatim resolves to the wrong country.
+# The region override above only fixes the *region*; the country_code column is
+# also consumed by fetch_world_coords.py to disambiguate geocoding, so it has to
+# be corrected too or the coordinates end up in the wrong country.
+COUNTRY_CODE_OVERRIDES = {
+    "Alexandria": "eg",    # resolved to Italy; show means Egypt
+    "Heraklion": "gr",     # resolved to Egypt; it's in Crete, Greece
+    "Omaha Beach": "fr",   # resolved to the US; it's in Normandy, France
+    "Parthenon": "gr",     # resolved to the Nashville replica; means Athens
+    "Pyramiderna": "eg",   # resolved to Sweden; means the pyramids of Giza
+    "Santiago": "es",      # resolved to Costa Rica; likely Santiago de Compostela
+    "Titanic": "gb",       # resolved to Czech Republic; likely Titanic Belfast
+    "Waterloo": "be",      # resolved to the US; likely the Belgian battlefield
+    "Panama City": "pa",   # resolved to Florida, USA; show means Panama
+}
+
 
 def load_country_continents() -> dict:
     req = urllib.request.Request(COUNTRY_INFO_URL, headers={"User-Agent": USER_AGENT})
@@ -122,7 +138,10 @@ def main():
         CACHE_PATH.write_text(json.dumps(cache, ensure_ascii=False, indent=1), encoding="utf-8")
         time.sleep(1.1)  # respect Nominatim's 1 req/sec usage policy
 
-    region_by_place = {place: classify(cache.get(place), continents) for place in unique_places}
+    country_code_by_place = {
+        place: COUNTRY_CODE_OVERRIDES.get(place, cache.get(place)) for place in unique_places
+    }
+    region_by_place = {place: classify(country_code_by_place[place], continents) for place in unique_places}
     region_by_place.update({p: r for p, r in REGION_OVERRIDES.items() if p in region_by_place})
 
     unknown = sorted(p for p, r in region_by_place.items() if r == "unknown")
@@ -134,7 +153,7 @@ def main():
         writer = csv.writer(f)
         writer.writerow(["resmal", "country_code", "region"])
         for place in unique_places:
-            writer.writerow([place, cache.get(place) or "", region_by_place[place]])
+            writer.writerow([place, country_code_by_place[place] or "", region_by_place[place]])
     print(f"\nWrote region classification for {len(unique_places)} places to {OUT_PATH}")
 
 
