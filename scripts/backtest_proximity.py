@@ -124,13 +124,14 @@ def main():
                 last_seen[r["resmal"]] = max(last_seen.get(r["resmal"], -1), tidx)
 
             # Chronological sequence of actual picks within the training window.
+            # An episode can contribute more than one pick to the same region,
+            # so every matching row is kept, not just the first.
             region_sequence = []
             for r in train_resa:
                 place = r["resmal"]
                 if region_by_place.get(place) == region:
                     tidx = train_episode_index[(r["sasong"], r["avsnitt"])]
-                    if not region_sequence or region_sequence[-1][0] != tidx:
-                        region_sequence.append((tidx, place))
+                    region_sequence.append((tidx, place))
             recent = [p for _, p in region_sequence[-lookback:]] if lookback else []
 
             def proximity_mult(place):

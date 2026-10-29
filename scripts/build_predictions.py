@@ -204,16 +204,16 @@ def main():
     }
 
     # Chronological sequence of actual picks per region, to penalise
-    # candidates close to the most recent one(s).
+    # candidates close to the most recent one(s). An episode can contribute
+    # more than one pick to the same region (e.g. two europe destinations in
+    # one episode), so every matching row is kept, not just the first.
     sequence_by_region = defaultdict(list)
     for r in resa_rows:
         place = r["resmal"]
         region = region_by_place.get(place)
         if region in PROXIMITY_REGIONS:
             idx = episode_index[(r["sasong"], r["avsnitt"])]
-            seq = sequence_by_region[region]
-            if not seq or seq[-1][0] != idx:
-                seq.append((idx, place))
+            sequence_by_region[region].append((idx, place))
     recent_places_by_region = {
         region: [p for _, p in seq[-PROXIMITY_LOOKBACK:]]
         for region, seq in sequence_by_region.items()
