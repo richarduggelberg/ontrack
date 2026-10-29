@@ -1382,5 +1382,9 @@
   "lat": 56.1496278,
   "lon": 10.2134046
  },
- "Ön Iwo Jima i Japan": null
+ "Ön Iwo Jima i Japan": null,
+ "Bornholm": {
+  "lat": 55.1431224,
+  "lon": 14.9226297
+ }
 }
