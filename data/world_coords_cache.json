@@ -1386,5 +1386,19 @@
  "Bornholm": {
   "lat": 55.1431224,
   "lon": 14.9226297
+ },
+ "Coachella": {
+  "lat": 33.6794956,
+  "lon": -116.17628
+ },
+ "Glastonburyfestivalen": null,
+ "Peace & Love": {
+  "lat": 48.8826183,
+  "lon": 2.3690835
+ },
+ "Roskildefestivalen": null,
+ "Timbuktu": {
+  "lat": 16.7719091,
+  "lon": -3.0087272
  }
 }
