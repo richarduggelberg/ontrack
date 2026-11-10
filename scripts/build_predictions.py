@@ -77,6 +77,11 @@ the tintin_haddock / narmast_vinner bonus segments: a place flagged there
 is unlikely to be picked as the main resmal again right away, so those
 mentions reset its cooldown too.
 
+Bonus segments: the last BONUS_LIMIT destinations across all bonus segments
+combined (see BONUS_SEGMENTS) are also emitted, newest first, under
+"bonus_destinations" so the page can list them in their own section. They are
+informational only - they never enter the candidate pools or the ranking.
+
 Usage: python scripts/build_predictions.py
 """
 import csv
@@ -101,6 +106,19 @@ RECENCY_WEIGHT = 1.0
 FAME_WEIGHT = 1.0
 TOP_N = 25
 WILDCARD_N = 10
+# How many destinations to keep for the page's bottom section, counted
+# across all bonus segments combined (the tintin_haddock segment only ever
+# had a handful of rows, so it contributes whatever it has).
+BONUS_LIMIT = 30
+# The show's "bonus" segments - they're not part of the main resa
+# prediction pools (see the docstring), but their destinations are worth
+# listing on their own since a place flagged there still resets its
+# cooldown. Keys are the typ values in resmal.csv, labels the Swedish
+# column headers on the Wikipedia episode list.
+BONUS_SEGMENTS = (
+    ("narmast_vinner", "Närmast vinner"),
+    ("tintin_haddock", "Tintin & Haddock"),
+)
 # Sweden can be literally any town (per manual review), so fame isn't a
 # useful discriminator there - only boost Europe/outside-Europe by it.
 FAME_REGIONS = ("europe", "outside_europe")
@@ -138,13 +156,34 @@ def haversine_km(a, b):
 
 def main():
     with REGIONS_CSV.open(encoding="utf-8") as f:
-        region_by_place = {row["resmal"]: row["region"] for row in csv.DictReader(f)}
+        region_rows = list(csv.DictReader(f))
+    region_by_place = {row["resmal"]: row["region"] for row in region_rows}
+    country_code_by_place = {row["resmal"]: row["country_code"] for row in region_rows}
 
     fame = json.loads(FAME_CACHE.read_text(encoding="utf-8")) if FAME_CACHE.exists() else {}
 
     with RESMAL_CSV.open(encoding="utf-8") as f:
         all_rows = list(csv.DictReader(f))
     resa_rows = [r for r in all_rows if r["typ"] == "resa"]
+
+    # The last BONUS_LIMIT destinations across all bonus segments combined,
+    # newest first - the page lists these in their own section below the
+    # region columns.
+    bonus_labels = dict(BONUS_SEGMENTS)
+    bonus_items = [
+        {
+            "place": r["resmal"],
+            "season": int(r["sasong"]),
+            "episode": int(r["avsnitt"]),
+            "date": r["datum"],
+            "country_code": country_code_by_place.get(r["resmal"], ""),
+            "segment": bonus_labels[r["typ"]],
+        }
+        for r in all_rows
+        if r["typ"] in bonus_labels
+    ]
+    bonus_items.sort(key=lambda item: (item["season"], item["episode"]))
+    bonus_items = bonus_items[-BONUS_LIMIT:][::-1]  # newest first
 
     # Assign a chronological episode index based on first appearance order.
     episode_index = {}
@@ -331,6 +370,7 @@ def main():
         "episode_count": total_episodes,
         "cooldown_episodes": COOLDOWN_EPISODES,
         "regions": output_regions,
+        "bonus_destinations": bonus_items,
     }
     OUT_PATH.write_text(json.dumps(output, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"Wrote predictions for {total_episodes} episodes to {OUT_PATH}")

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-10T15:34:14+00:00",
+  "generated_at": "2026-11-10T15:41:59+00:00",
   "episode_count": 388,
   "cooldown_episodes": 100,
   "regions": {
@@ -613,5 +613,247 @@
         }
       ]
     }
-  }
+  },
+  "bonus_destinations": [
+    {
+      "place": "Ales stenar",
+      "season": 37,
+      "episode": 7,
+      "date": "2026-10-30",
+      "country_code": "se",
+      "segment": "Närmast vinner"
+    },
+    {
+      "place": "Visby ringmur",
+      "season": 37,
+      "episode": 7,
+      "date": "2026-10-30",
+      "country_code": "se",
+      "segment": "Närmast vinner"
+    },
+    {
+      "place": "Mount Rushmore",
+      "season": 37,
+      "episode": 7,
+      "date": "2026-10-30",
+      "country_code": "us",
+      "segment": "Närmast vinner"
+    },
+    {
+      "place": "Kabul",
+      "season": 37,
+      "episode": 6,
+      "date": "2026-10-23",
+      "country_code": "af",
+      "segment": "Närmast vinner"
+    },
+    {
+      "place": "Riga",
+      "season": 37,
+      "episode": 6,
+      "date": "2026-10-23",
+      "country_code": "lv",
+      "segment": "Närmast vinner"
+    },
+    {
+      "place": "Malmö",
+      "season": 37,
+      "episode": 6,
+      "date": "2026-10-23",
+      "country_code": "se",
+      "segment": "Närmast vinner"
+    },
+    {
+      "place": "Lund",
+      "season": 37,
+      "episode": 5,
+      "date": "2026-10-16",
+      "country_code": "se",
+      "segment": "Närmast vinner"
+    },
+    {
+      "place": "Vasa",
+      "season": 37,
+      "episode": 5,
+      "date": "2026-10-16",
+      "country_code": "fi",
+      "segment": "Närmast vinner"
+    },
+    {
+      "place": "Haag",
+      "season": 37,
+      "episode": 5,
+      "date": "2026-10-16",
+      "country_code": "nl",
+      "segment": "Närmast vinner"
+    },
+    {
+      "place": "Timbuktu",
+      "season": 37,
+      "episode": 5,
+      "date": "2026-10-16",
+      "country_code": "ml",
+      "segment": "Närmast vinner"
+    },
+    {
+      "place": "Houston",
+      "season": 37,
+      "episode": 5,
+      "date": "2026-10-16",
+      "country_code": "us",
+      "segment": "Närmast vinner"
+    },
+    {
+      "place": "Coachella",
+      "season": 37,
+      "episode": 4,
+      "date": "2026-10-09",
+      "country_code": "us",
+      "segment": "Närmast vinner"
+    },
+    {
+      "place": "Peace & Love",
+      "season": 37,
+      "episode": 4,
+      "date": "2026-10-09",
+      "country_code": "fr",
+      "segment": "Närmast vinner"
+    },
+    {
+      "place": "Glastonburyfestivalen",
+      "season": 37,
+      "episode": 4,
+      "date": "2026-10-09",
+      "country_code": "gb",
+      "segment": "Närmast vinner"
+    },
+    {
+      "place": "Roskildefestivalen",
+      "season": 37,
+      "episode": 4,
+      "date": "2026-10-09",
+      "country_code": "dk",
+      "segment": "Närmast vinner"
+    },
+    {
+      "place": "Laxå",
+      "season": 37,
+      "episode": 3,
+      "date": "2026-10-02",
+      "country_code": "se",
+      "segment": "Närmast vinner"
+    },
+    {
+      "place": "Memphis",
+      "season": 37,
+      "episode": 3,
+      "date": "2026-10-02",
+      "country_code": "us",
+      "segment": "Närmast vinner"
+    },
+    {
+      "place": "Vilhelmina",
+      "season": 37,
+      "episode": 3,
+      "date": "2026-10-02",
+      "country_code": "se",
+      "segment": "Närmast vinner"
+    },
+    {
+      "place": "Magaluf",
+      "season": 37,
+      "episode": 3,
+      "date": "2026-10-02",
+      "country_code": "es",
+      "segment": "Närmast vinner"
+    },
+    {
+      "place": "Ankara",
+      "season": 37,
+      "episode": 2,
+      "date": "2026-09-25",
+      "country_code": "tr",
+      "segment": "Närmast vinner"
+    },
+    {
+      "place": "Kiev",
+      "season": 37,
+      "episode": 2,
+      "date": "2026-09-25",
+      "country_code": "ua",
+      "segment": "Närmast vinner"
+    },
+    {
+      "place": "Pyongyang",
+      "season": 37,
+      "episode": 2,
+      "date": "2026-09-25",
+      "country_code": "kp",
+      "segment": "Närmast vinner"
+    },
+    {
+      "place": "Delhi",
+      "season": 37,
+      "episode": 2,
+      "date": "2026-09-25",
+      "country_code": "in",
+      "segment": "Närmast vinner"
+    },
+    {
+      "place": "Peking",
+      "season": 37,
+      "episode": 2,
+      "date": "2026-09-25",
+      "country_code": "cn",
+      "segment": "Närmast vinner"
+    },
+    {
+      "place": "Rabat",
+      "season": 37,
+      "episode": 1,
+      "date": "2026-09-18",
+      "country_code": "ma",
+      "segment": "Närmast vinner"
+    },
+    {
+      "place": "Abuja",
+      "season": 37,
+      "episode": 1,
+      "date": "2026-09-18",
+      "country_code": "ng",
+      "segment": "Närmast vinner"
+    },
+    {
+      "place": "Brasília",
+      "season": 37,
+      "episode": 1,
+      "date": "2026-09-18",
+      "country_code": "br",
+      "segment": "Närmast vinner"
+    },
+    {
+      "place": "Zagreb",
+      "season": 37,
+      "episode": 1,
+      "date": "2026-09-18",
+      "country_code": "hr",
+      "segment": "Närmast vinner"
+    },
+    {
+      "place": "Seoul",
+      "season": 37,
+      "episode": 1,
+      "date": "2026-09-18",
+      "country_code": "kr",
+      "segment": "Närmast vinner"
+    },
+    {
+      "place": "Båstad",
+      "season": 36,
+      "episode": 15,
+      "date": "2026-01-30",
+      "country_code": "se",
+      "segment": "Närmast vinner"
+    }
+  ]
 }

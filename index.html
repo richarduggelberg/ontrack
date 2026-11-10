@@ -124,6 +124,54 @@
       padding: 1rem;
       font-size: 0.85rem;
     }
+    .bonus {
+      max-width: 1200px;
+      margin: 0 auto 1.5rem;
+      padding: 0 1.5rem;
+    }
+    .bonus-card {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 10px;
+      padding: 1rem 1.25rem 1.25rem;
+    }
+    .bonus-card h2 {
+      font-size: 1.2rem;
+      margin: 0 0 0.35rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid #30363d;
+    }
+    .bonus-card .hint {
+      margin: 0 0 1rem;
+      color: #8b949e;
+      font-size: 0.75rem;
+    }
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .chips li {
+      display: flex;
+      align-items: baseline;
+      gap: 0.35rem;
+      padding: 0.3rem 0.6rem;
+      background: #0d1117;
+      border: 1px solid #30363d;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      line-height: 1.2;
+    }
+    .chips .meta { font-size: 0.7rem; }
+    .chips .tag {
+      font-size: 0.65rem;
+      color: #8b949e;
+      padding-left: 0.35rem;
+      border-left: 1px solid #30363d;
+    }
   </style>
 </head>
 <body>
@@ -134,6 +182,7 @@
   <div class="columns" id="columns">
     <p class="status">Laddar förutsägelser…</p>
   </div>
+  <section class="bonus" id="bonus"></section>
   <footer id="footer"></footer>
 
   <script>
@@ -145,6 +194,50 @@
       if (!code || code.length !== 2) return "";
       const points = [...code.toUpperCase()].map((c) => 0x1f1e6 + c.charCodeAt(0) - 65);
       return String.fromCodePoint(...points);
+    }
+
+    function shortDate(isoDate) {
+      if (!isoDate) return "";
+      // Parse as local midnight so the day doesn't shift in negative offsets.
+      const d = new Date(`${isoDate}T00:00:00`);
+      if (Number.isNaN(d.getTime())) return isoDate;
+      return d.toLocaleDateString("sv-SE", { day: "numeric", month: "short" });
+    }
+
+    function renderBonusDestinations(data) {
+      const bonusEl = document.getElementById("bonus");
+      bonusEl.innerHTML = "";
+      const items = data.bonus_destinations;
+      if (!items || !items.length) return;
+
+      const card = document.createElement("div");
+      card.className = "bonus-card";
+
+      const h2 = document.createElement("h2");
+      h2.textContent = "Senaste i bonussegmenten";
+      card.appendChild(h2);
+
+      const hint = document.createElement("p");
+      hint.className = "hint";
+      hint.textContent =
+        `De ${items.length} senaste resmålen från bonussegmenten (Närmast vinner / Tintin & Haddock) – de räknas inte in i förutsägelserna, men nollställer ändå karensen för ett resmål.`;
+      card.appendChild(hint);
+
+      const ul = document.createElement("ul");
+      ul.className = "chips";
+      items.forEach((item) => {
+        const li = document.createElement("li");
+        const flag = countryFlagEmoji(item.country_code);
+        li.innerHTML = `
+          <span class="place-name">${flag ? flag + " " : ""}${item.place}</span>
+          <span class="meta">S${item.season}E${item.episode} · ${shortDate(item.date)}</span>
+          <span class="tag">${item.segment}</span>
+        `;
+        ul.appendChild(li);
+      });
+      card.appendChild(ul);
+
+      bonusEl.appendChild(card);
     }
 
     async function loadPredictions() {
@@ -210,6 +303,8 @@
 
           columnsEl.appendChild(col);
         }
+
+        renderBonusDestinations(data);
 
         footerEl.textContent =
           `Baserat på ${data.episode_count} avsnitt · uppdaterad ${new Date(data.generated_at).toLocaleString("sv-SE")}`;
