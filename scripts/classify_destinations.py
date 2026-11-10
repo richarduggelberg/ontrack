@@ -58,6 +58,9 @@ REGION_OVERRIDES = {
     "Trevifontänen i Rom": "europe",  # Trevi Fountain, Rome
     "Woodstockfestivalen": "outside_europe",  # Woodstock, New York, USA
     "Ön Iwo Jima i Japan": "outside_europe",  # Iwo Jima, Japan
+    "Roskildefestivalen": "europe",  # festival in Roskilde, Denmark (unresolved)
+    "Glastonburyfestivalen": "europe",  # Glastonbury Festival, UK (unresolved)
+    "Visby ringmur": "sweden",  # Visby city wall, Gotland (monument, unresolved)
 }
 
 # Corrected country codes for places Nominatim resolves to the wrong country.
@@ -74,6 +77,9 @@ COUNTRY_CODE_OVERRIDES = {
     "Titanic": "gb",       # resolved to Czech Republic; likely Titanic Belfast
     "Waterloo": "be",      # resolved to the US; likely the Belgian battlefield
     "Panama City": "pa",   # resolved to Florida, USA; show means Panama
+    "Roskildefestivalen": "dk",  # festival in Roskilde, Denmark
+    "Glastonburyfestivalen": "gb",  # Glastonbury Festival, UK
+    "Visby ringmur": "se",  # Visby city wall, Gotland
 }
 
 
@@ -150,7 +156,7 @@ def main():
         print(" ", p)
 
     with OUT_PATH.open("w", newline="", encoding="utf-8") as f:
-        writer = csv.writer(f)
+        writer = csv.writer(f, lineterminator="\n")
         writer.writerow(["resmal", "country_code", "region"])
         for place in unique_places:
             writer.writerow([place, country_code_by_place[place] or "", region_by_place[place]])

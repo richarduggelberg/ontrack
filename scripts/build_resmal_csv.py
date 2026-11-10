@@ -252,7 +252,7 @@ def main():
     with out_path.open("w", newline="", encoding="utf-8") as f:
         writer = csv.DictWriter(f, fieldnames=[
             "sasong", "sasong_ar", "avsnitt", "datum", "matchtyp", "typ", "ordning", "resmal",
-        ])
+        ], lineterminator="\n")
         writer.writeheader()
         writer.writerows(out_rows)
 

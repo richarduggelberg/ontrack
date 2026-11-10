@@ -195,7 +195,7 @@ def main():
     rows.sort(key=lambda r: r["fame"], reverse=True)
 
     with OUT_PATH.open("w", newline="", encoding="utf-8") as f:
-        writer = csv.DictWriter(f, fieldnames=["resmal", "country_code", "region", "population", "fame"])
+        writer = csv.DictWriter(f, fieldnames=["resmal", "country_code", "region", "population", "fame"], lineterminator="\n")
         writer.writeheader()
         writer.writerows(rows)
     print(f"Wrote {len(rows)} wildcard candidates to {OUT_PATH}")
